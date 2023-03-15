@@ -19,7 +19,8 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    #this variable allow the api call just for the front end app
+    'allowed_origins' => [env('LINK_APP_FRONTEND', '*')],
 
     'allowed_origins_patterns' => [],
 
