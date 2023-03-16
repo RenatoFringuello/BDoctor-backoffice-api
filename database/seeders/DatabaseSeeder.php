@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             ProfileTableSeeder::class,
+            ReviewTableSeeder::class
         ]);
     }
 }
