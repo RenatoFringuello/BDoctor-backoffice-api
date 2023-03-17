@@ -49,4 +49,17 @@ class User extends Authenticatable
     public function reviews(){
         return $this->hasMany(Review::class);
     }
+
+    /**
+     * Connect User table to your Profile table
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
