@@ -29,11 +29,6 @@ class ReviewTableSeeder extends Seeder
             $newReview->rating = $faker->numberBetween(0, 10);
             $newReview->save();
 
-
-
-
-            # code...
         }
-        //
     }
 }
