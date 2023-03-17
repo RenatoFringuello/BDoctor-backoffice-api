@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Specialization;
 
 class Profile extends Model
 {
@@ -20,6 +21,6 @@ class Profile extends Model
     ];
 
     public function specializations(){
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Specialization::class);
     }
 }

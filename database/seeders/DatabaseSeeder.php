@@ -25,8 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             ProfileTableSeeder::class,
-            ReviewTableSeeder::class,
             SpecializationTableSeeder::class,
+            ProfileSpecializationTableSeeder::class,
+            ReviewTableSeeder::class,
             SponsorTableSeeder::class,
             MessageTableSeeder::class,
         ]);
