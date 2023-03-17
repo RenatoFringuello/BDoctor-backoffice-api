@@ -20,7 +20,16 @@ class Profile extends Model
         'telephone'
     ];
 
-    public function specializations(){
+    public function specializations()
+    {
         return $this->belongsToMany(Specialization::class);
+    }
+
+    /**
+     * Connect Profile table to your User table
+     */
+    public function profile()
+    {
+        return $this->belongsTo(User::class);
     }
 }
