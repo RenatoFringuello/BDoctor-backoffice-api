@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             ProfileTableSeeder::class,
             ReviewTableSeeder::class,
-            SpecializationTableSeeder::class
+            SpecializationTableSeeder::class,
+            SponsorTableSeeder::class,
         ]);
     }
 }
