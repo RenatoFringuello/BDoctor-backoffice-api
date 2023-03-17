@@ -46,7 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
     }
 
@@ -61,5 +62,10 @@ class User extends Authenticatable
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+
+    public function sponsors()
+    {
+        return $this->belongsToMany(Sponsor::class)->withPivot(['start_date', 'end_date']);
     }
 }

@@ -16,18 +16,23 @@ class SponsorTableSeeder extends Seeder
     public function run()
     {
         $sponsors = [
-            [ 
-                "type" => "basic", 
+            [
+                "type" => "noSponsor",
+                "price" => 0.00,
+                "duration" => 0
+            ],
+            [
+                "type" => "basic",
                 "price" => 2.99,
                 "duration" => 24
             ],
-            [ 
-                "type" => "intermediate", 
+            [
+                "type" => "intermediate",
                 "price" => 5.99,
                 "duration" => 72
             ],
-            [ 
-                "type" => "advanced", 
+            [
+                "type" => "advanced",
                 "price" => 9.99,
                 "duration" => 144
             ],

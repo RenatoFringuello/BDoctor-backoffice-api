@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ProfileSpecializationTableSeeder::class,
             ReviewTableSeeder::class,
             SponsorTableSeeder::class,
+            SponsorUserTableSeeder::class,
             MessageTableSeeder::class,
         ]);
     }
