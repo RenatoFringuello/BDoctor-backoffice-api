@@ -18,4 +18,8 @@ class Profile extends Model
         'address',
         'telephone'
     ];
+
+    public function specializations(){
+        return $this->belongsToMany(Profile::class);
+    }
 }
