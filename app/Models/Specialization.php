@@ -9,7 +9,7 @@ class Specialization extends Model
 {
     use HasFactory;
 
-    protected $fillables = [
+    protected $fillable = [
         'name',
     ];
 }
