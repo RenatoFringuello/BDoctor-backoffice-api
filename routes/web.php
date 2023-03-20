@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // Profile Register
+    Route::get('profile.register', [AuthProfileController::class, 'create'])
+        ->name('profile.register');
+    Route::post('profile.store', [AuthProfileController::class, 'store'])
+        ->name('profile.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
