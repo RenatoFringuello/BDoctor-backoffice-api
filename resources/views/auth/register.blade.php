@@ -12,7 +12,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">Registrati</h3>
+                            <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">Let's Create Your Profile</h3>
 
                             {{-- input row --}}
                             <div class="mb-4 row">
@@ -111,7 +111,7 @@
                             </div>
 
                             {{-- specialization --}}
-                            <label class="col-md-4 col-form-label text-md-right">{{ __('Specializations*') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right mb-3">{{ __('Specializations*') }}</label>
                             <div class="mb-4 row">
                                 @error('specializations')
                                     <span class="invalid-feedback text-danger" role="alert">
@@ -123,7 +123,7 @@
                                         <label for="{{ $specialization->name }}"
                                             class="text-capitalize text-md-right">{{ __($specialization->name) }}</label>
                                         <input id="{{ $specialization->name }}" type="checkbox" name="specializations[]"
-                                            value="{{ $specialization->id }}"
+                                            value="{{ $specialization->id }}" class="mb-3"
                                             @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[]))) @endif
                                             autofocus>
                                     </div>
