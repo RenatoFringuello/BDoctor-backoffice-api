@@ -23,7 +23,8 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $specializations = Specialization::all();
-        return view('auth.register', compact('specializations'));
+        $user = new User();
+        return view('auth.register', compact('specializations', 'user'));
     }
 
     /**
@@ -77,7 +78,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('profile.register');
+        //return redirect(RouteServiceProvider::HOME);
     }
 }
