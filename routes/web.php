@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -25,10 +25,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     // Profile Register
-    Route::get('profile.register', [AuthProfileController::class, 'create'])
+    Route::get('profile/register', [AuthProfileController::class, 'edit'])
         ->name('profile.register');
-    Route::post('profile.store', [AuthProfileController::class, 'store'])
-        ->name('profile.store');
+
+    Route::put('profile/update', [AuthProfileController::class, 'update'])
+        ->name('profile.update');
 });
 
 require __DIR__ . '/auth.php';

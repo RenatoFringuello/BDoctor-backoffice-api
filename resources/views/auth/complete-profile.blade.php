@@ -10,8 +10,8 @@
                     <div class="card-body">
                         @include('partials.profile-form', [
                             'title' => 'Complete your profile',
-                            'method' => 'post',
-                            'routeName' => 'profile.store', //Controller Profile
+                            'method' => 'put',
+                            'routeName' => 'profile.update', //Controller Profile
                         ])
                     </div>
                 </div>
