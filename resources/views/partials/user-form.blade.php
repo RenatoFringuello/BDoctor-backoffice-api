@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <input id="name" type="text"
                 class="form-control @error('name') is-invalid @enderror" name="name"
-                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                value="{{ old('name', $user->name) }}" required autocomplete="name" autofocus>
 
             @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
         <div class="col-md-6">
             <input id="lastname" type="text"
                 class="form-control @error('lastname') is-invalid @enderror" name="lastname"
-                value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+                value="{{ old('lastname', $user->lastname) }}" required autocomplete="lastname" autofocus>
 
             @error('lastname')
                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
         <div class="col-md-6">
             <input id="email" type="email"
                 class="form-control @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email') }}" required autocomplete="email">
+                value="{{ old('email', $user->email) }}" required autocomplete="email">
 
             @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -56,20 +56,22 @@
         </div>
     </div>
 
+    @if ($routeName === 'register')
+        
     {{-- pw --}}
     <div class="mb-4 row">
         <label for="password"
-            class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
-
+        class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
+        
         <div class="col-md-6">
             <input id="password" type="password"
-                class="form-control @error('password') is-invalid @enderror" name="password"
-                required autocomplete="new-password">
-
+            class="form-control @error('password') is-invalid @enderror" name="password"
+            required autocomplete="new-password">
+            
             @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
             @enderror
         </div>
     </div>
@@ -85,6 +87,9 @@
     </div>
     {{-- end pw --}}
 
+    @endif
+
+
     <div class="mb-4 row">
         <label for="address"
             class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
@@ -92,7 +97,7 @@
         <div class="col-md-6">
             <input id="address" type="text"
                 class="form-control @error('address') is-invalid @enderror" name="address"
-                value="{{ old('address') }}" required autocomplete="address" autofocus>
+                value="{{ old('address', $user->profile->address) }}" required autocomplete="address" autofocus>
 
             @error('address')
                 <span class="invalid-feedback" role="alert">
@@ -116,7 +121,8 @@
                     class="text-capitalize text-md-right">{{ __($specialization->name) }}</label>
                 <input id="{{ $specialization->name }}" type="checkbox" name="specializations[]"
                     value="{{ $specialization->id }}"
-                    @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[]))) @endif
+                    @if ($errors->any()) @checked(in_array($specialization->id, old('specialization', $user->profile->specializations->toArray())))
+                    @endif
                     autofocus>
             </div>
         @endforeach

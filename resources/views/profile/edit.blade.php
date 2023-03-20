@@ -7,13 +7,13 @@
     </h2>
     <div class="card p-4 mb-4 bg-white shadow rounded-lg">
 
-        @include('partials.user-form', ['specializations' => $specializations, 'title'=>'Edit', 'method'=>'put', 'routeName'=>'profile.edit'])
+        @include('partials.user-form', ['user'=>$user, 'specializations' => $specializations, 'title'=>'Edit Doctor\'s info', 'method'=>'put', 'routeName'=>'profile.edit'])
 
     </div>
     
     <div class="card p-4 mb-4 bg-white shadow rounded-lg">
 
-        @include('partials.profile-form', ['title'=>'Edit', 'method'=>'put', 'routeName'=>'profile.edit'])
+        @include('partials.profile-form', ['title'=>'Edit other info', 'method'=>'put', 'routeName'=>'profile.edit'])
 
     </div>
 
