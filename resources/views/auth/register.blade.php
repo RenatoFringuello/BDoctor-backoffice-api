@@ -12,10 +12,12 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">Registrati</h3>
+
                             {{-- input row --}}
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -32,7 +34,7 @@
 
                             <div class="mb-4 row">
                                 <label for="lastname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Lastname*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="lastname" type="text"
@@ -49,7 +51,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -66,7 +68,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -83,7 +85,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -93,7 +95,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -109,7 +111,7 @@
                             </div>
 
                             {{-- specialization --}}
-                            <label class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('Specializations*') }}</label>
                             <div class="mb-4 row">
                                 @error('specializations')
                                     <span class="invalid-feedback text-danger" role="alert">
@@ -127,6 +129,9 @@
                                     </div>
                                 @endforeach
                             </div>
+
+                            <hr>
+                            <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">Completa i dati del tuo profilo</h3>
 
                             {{-- Picture --}}
                             <div class="mb-4 row">
