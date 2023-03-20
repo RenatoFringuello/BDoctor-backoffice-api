@@ -2,12 +2,11 @@
     @csrf
     @method($method)
 
-    <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">{{$title}}</h3>
+    <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">{{ $title }}</h3>
 
     {{-- input row --}}
     <div class="mb-4 row">
-        <label for="name"
-            class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
+        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
 
         <div class="col-md-6">
             <input id="name" type="text"
@@ -23,8 +22,7 @@
     </div>
 
     <div class="mb-4 row">
-        <label for="lastname"
-            class="col-md-4 col-form-label text-md-right">{{ __('Lastname*') }}</label>
+        <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname*') }}</label>
 
         <div class="col-md-6">
             <input id="lastname" type="text"
@@ -40,8 +38,7 @@
     </div>
 
     <div class="mb-4 row">
-        <label for="email"
-            class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
+        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
         <div class="col-md-6">
             <input id="email" type="email"
@@ -81,8 +78,8 @@
             class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
 
         <div class="col-md-6">
-            <input id="password-confirm" type="password" class="form-control"
-                name="password_confirmation" required autocomplete="new-password">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                autocomplete="new-password">
         </div>
     </div>
     {{-- end pw --}}
@@ -91,8 +88,7 @@
 
 
     <div class="mb-4 row">
-        <label for="address"
-            class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
+        <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
 
         <div class="col-md-6">
             <input id="address" type="text"
