@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('profile.register');
 
     Route::put('profile/update', [AuthProfileController::class, 'update'])
-        ->name('profile.update');
+        ->name('profile.register.update');
 });
 
 require __DIR__ . '/auth.php';
