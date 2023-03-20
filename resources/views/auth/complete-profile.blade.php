@@ -11,7 +11,7 @@
                         @include('partials.profile-form', [
                             'title' => 'Complete your profile',
                             'method' => 'put',
-                            'routeName' => 'profile.update', //Controller Profile
+                            'routeName' => 'profile.register.update', //Controller Profile
                         ])
                     </div>
                 </div>
