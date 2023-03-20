@@ -93,7 +93,12 @@
         <div class="col-md-6">
             <input id="address" type="text"
                 class="form-control @error('address') is-invalid @enderror" name="address"
-                value="{{ old('address', $user->profile->address) }}" required autocomplete="address" autofocus>
+                @if ($routeName === 'register')
+                value="{{ old('address') }}" 
+                @else
+                value="{{ old('address', $user->profile->address) }}" 
+                @endif
+                required autocomplete="address" autofocus>
 
             @error('address')
                 <span class="invalid-feedback" role="alert">

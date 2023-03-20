@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route($routeName, $profile->id) }}">
+<form method="POST" action="{{ route($routeName, $user->profile) }}">
     @csrf
     @method($method)
 
