@@ -31,11 +31,11 @@ class ProfileController extends Controller
         // $data = $request->all();//da fare il validate
         $data = $request->validate([
             // Required
-            'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'address' => ['required', 'string', 'max:255'],
-            'specializations' => ['required', 'array', 'min:1', 'exists:specializations,id'],
+            'picture' => ['image', 'nullable'],
+            'bio' => ['string'],
+            'services' => ['string'],
+            'telephone' => ['string', 'max:13', 'regex:/^[0-9]+$/'],
+            'curriculum' => ['image', 'nullable'],
         ]);
 
         // dd($profile);
