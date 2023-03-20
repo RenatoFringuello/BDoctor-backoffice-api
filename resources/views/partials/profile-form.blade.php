@@ -39,10 +39,10 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class="form-control @error('service') is-invalid @enderror" name="service" value="{{ old('service') }}"
-                autocomplete="service" autofocus cols="30" rows="10" placeholder="Inser Your Service"></textarea>
+            <textarea class="form-control @error('services') is-invalid @enderror" name="services" value="{{ old('services') }}"
+                autocomplete="services" autofocus cols="30" rows="10" placeholder="Inser Your Service"></textarea>
 
-            @error('service')
+            @error('services')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
