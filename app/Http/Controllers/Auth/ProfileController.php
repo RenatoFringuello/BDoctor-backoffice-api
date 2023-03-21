@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -40,8 +41,15 @@ class ProfileController extends Controller
 
         // dd($profile);
         $profile = Auth::user()->profile;
+
+        // $imgPath = Storage::put('placeholder/imgs', $data['picture']);
+
+        $imgPath = Storage::put('placeholder/imgs', $data['picture']);
+        $profile->update($data);
+        $data['picture'] = $imgPath;
         $profile->update($data);
 
+        // dd($profile);
         return view('dashboard', compact('profile'));
     }
 }
