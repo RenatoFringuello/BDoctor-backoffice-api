@@ -123,7 +123,8 @@
                 <input id="{{ $specialization->name }}" type="checkbox" name="specializations[]"
                     value="{{ $specialization->id }}" autofocus
                     @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
-                    @else @checked($user->profile->specializations->contains($specialization->id))
+                    {{-- checked true = $user->profile->specializations != null --}}
+                    @else @checked(isset($user->profile->specializations) ? $user->profile->specializations->contains($specialization->id) : false)
                     @endif>
             </div>
         @endforeach
