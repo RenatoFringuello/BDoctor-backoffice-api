@@ -121,10 +121,10 @@
                 <label for="{{ $specialization->name }}"
                     class="text-capitalize text-md-right">{{ __($specialization->name) }}</label>
                 <input id="{{ $specialization->name }}" type="checkbox" name="specializations[]"
-                    value="{{ $specialization->id }}"
-                    @if ($errors->any()) @checked(in_array($specialization->id, old('specialization', $user->profile->specializations->toArray())))
-                    @endif
-                    autofocus>
+                    value="{{ $specialization->id }}" autofocus
+                    @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
+                    @else @checked($user->profile->specializations->contains($specialization->id))
+                    @endif>
             </div>
         @endforeach
     </div>
