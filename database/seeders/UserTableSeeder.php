@@ -160,6 +160,16 @@ class UserTableSeeder extends Seeder
             ],
         ];
 
+        foreach ($users as $user) {
+            $newUser = new User();
+            $newUser->name = $user['name'];
+            $newUser->lastname = $user['lastname'];
+            $newUser->email = $user['email'];
+            $newUser->password = Hash::make($user['password']);
+            $newUser->isActive = $user['isActive'];
+            $newUser->save();
+        }
+
 
 
 
