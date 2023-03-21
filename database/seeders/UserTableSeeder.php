@@ -61,9 +61,9 @@ class UserTableSeeder extends Seeder
                 "isActive" => false
             ],
             [
-                "name" => "Sonia",
+                "name" => "Rebecca",
                 "lastname" => "De Cillis",
-                "email" => "soniad@mailme.de",
+                "email" => "rebeccad@mailme.de",
                 "password" => "123456789",
                 "isActive" => true
             ],
@@ -90,8 +90,8 @@ class UserTableSeeder extends Seeder
             ],
             [
                 "name" => "Daniel",
-                "lastname" => "De Cillis",
-                "email" => "danield",
+                "lastname" => "De Claudis",
+                "email" => "danield@gmail.re",
                 "password" => "123456789",
                 "isActive" => true
             ],
