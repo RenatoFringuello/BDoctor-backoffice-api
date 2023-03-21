@@ -20,7 +20,7 @@
             @include('partials.profile-form', [
                 'title' => 'Edit other info',
                 'method' => 'put',
-                'routeName' => 'profile.register.update',
+                'routeName' => 'profile.register.update', //lo mando in profile.register.update perchè fa le stesse cose del register
             ])
 
         </div>
