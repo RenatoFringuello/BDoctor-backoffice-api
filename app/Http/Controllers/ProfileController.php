@@ -53,7 +53,9 @@ class ProfileController extends Controller
 
         // Delete Img
         $profileImgPath = $user->profile->picture;
-        Storage::delete($profileImgPath);
+        if ($profileImgPath != 'placeholder/place.jpg') {
+            Storage::delete($profileImgPath);
+        }
 
 
         Auth::logout();
@@ -63,6 +65,6 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/login');
     }
 }
