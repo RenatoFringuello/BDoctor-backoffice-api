@@ -10,7 +10,7 @@
 
         <div class="col-md-6">
             <input id="picture" type="file" class="form-control @error('picture') is-invalid @enderror"
-                name="picture" value="{{ old('picture') }}" autocomplete="picture" autofocus>
+                name="picture" value="{{ old('picture', $user->profile->picture) }}" autocomplete="picture" autofocus>
 
             @error('picture')
                 <span class="invalid-feedback" role="alert">
@@ -24,8 +24,8 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class="form-control @error('bio') is-invalid @enderror" name="bio" value="{{ old('bio') }}"
-                autocomplete="bio" autofocus cols="30" rows="10" placeholder="Inser Your Bio"></textarea>
+            <textarea class="form-control @error('bio') is-invalid @enderror" name="bio"
+                autocomplete="bio" autofocus cols="30" rows="10" placeholder="Inser Your Bio">{{ old('bio', $user->profile->bio) }}</textarea>
 
             @error('bio')
                 <span class="invalid-feedback" role="alert">
@@ -39,8 +39,8 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class="form-control @error('services') is-invalid @enderror" name="services" value="{{ old('services') }}"
-                autocomplete="services" autofocus cols="30" rows="10" placeholder="Inser Your Service"></textarea>
+            <textarea class="form-control @error('services') is-invalid @enderror" name="services" 
+                autocomplete="services" autofocus cols="30" rows="10" placeholder="Inser Your Service">{{ old('services', $user->profile->services) }}</textarea>
 
             @error('services')
                 <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
 
         <div class="col-md-6">
             <input id="telephone" type="text" class="form-control @error('telephone') is-invalid @enderror"
-                name="telephone" value="{{ old('telephone') }}" autocomplete="telephone" autofocus>
+                name="telephone" value="{{ old('telephone',$user->profile->telephone) }}" autocomplete="telephone" autofocus>
 
             @error('telephone')
                 <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
 
         <div class="col-md-6">
             <input id="curriculum" type="file" class="form-control @error('curriculum') is-invalid @enderror"
-                name="curriculum" value="{{ old('curriculum') }}" autocomplete="curriculum" autofocus>
+                name="curriculum" value="{{ old('curriculum',$user->profile->curriculum) }}" autocomplete="curriculum" autofocus>
 
             @error('curriculum')
                 <span class="invalid-feedback" role="alert">
