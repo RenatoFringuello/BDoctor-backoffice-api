@@ -15,7 +15,7 @@ class ApiDoctorsController extends Controller
 
     public function index()
     {
-        $users = User::with('profile', 'sponsors')->paginate(10);
+        $users = User::with('profile', 'profile.specializations', 'sponsors')->paginate(10);
         return response()->json([
             'success' => true,
             'results' => $users
