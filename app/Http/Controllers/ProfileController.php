@@ -57,6 +57,12 @@ class ProfileController extends Controller
             Storage::delete($profileImgPath);
         }
 
+        // Delete CV
+        $profileCVPath = $user->profile->curriculum;
+        if ($profileCVPath != 'null') {
+            Storage::delete($profileCVPath);
+        }
+
 
         Auth::logout();
 
