@@ -45,11 +45,9 @@ class ProfileController extends Controller
         // $imgPath = Storage::put('placeholder/imgs', $data['picture']);
 
         $imgPath = Storage::put('placeholder/imgs', $data['picture']);
-        $profile->update($data);
         $data['picture'] = $imgPath;
         $profile->update($data);
 
-        // dd($profile);
         return view('dashboard', compact('profile'));
     }
 }
