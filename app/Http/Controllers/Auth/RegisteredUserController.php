@@ -50,15 +50,6 @@ class RegisteredUserController extends Controller
             'curriculum' => ['image', 'nullable'],
         ]);
 
-        // dd($request);
-
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'lastname' => $request->lastname,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
-
         // User Data
         $user = new User();
         $user->fill($data);
@@ -66,13 +57,13 @@ class RegisteredUserController extends Controller
         $user->isActive = true;
         $user->save();
 
-        // dd(User::where('email', $user->email)->pluck('id'));
-
         // Profile Data
         $profile = new Profile();
         $profile->fill($data);
         $profile->user_id = User::where('email', $user->email)->pluck('id')[0];
+        //save specializations
         $profile->save();
+        $profile->specializations()->sync($data['specializations'] ?? []);
 
         event(new Registered($user));
 
