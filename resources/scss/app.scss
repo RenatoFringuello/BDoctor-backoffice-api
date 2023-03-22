@@ -1,1 +1,9 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background: rgb(25, 178, 181);
+    background: linear-gradient(0deg, rgba(25, 178, 181, 1) 0%, rgba(25, 178, 181, 1) 47%, rgba(12, 119, 170, 1) 99%, rgba(12, 119, 170, 1) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
