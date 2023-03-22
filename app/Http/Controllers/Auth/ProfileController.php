@@ -38,12 +38,7 @@ class ProfileController extends Controller
                 'bio' => ['string', 'min:5', 'nullable'],
                 'services' => ['string', 'nullable'],
                 'telephone' => ['string', 'max:13', 'regex:/^[0-9]+$/', 'nullable'],
-                'curriculum' => [
-                    'mimes:jpg,pdf,png', 'max:800',
-                    // File::types(['pdf', 'image'])
-                    //     ->max(800),
-                    'nullable'
-                ],
+                'curriculum' => ['mimes:jpg,pdf,png', 'max:800', 'nullable'],
             ],
             [
                 'picture.image' => 'The file must be an image',

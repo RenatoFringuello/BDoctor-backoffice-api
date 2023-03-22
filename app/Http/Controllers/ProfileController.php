@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Profile;
 use App\Models\Specialization;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request, Profile $profile): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
@@ -36,6 +37,17 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+
+        // Single Validation for Address
+        $data = $request->validate(
+            [
+                'address' => ['required', 'string', 'max:255'],
+            ]
+        );
+
+        // For Update Address
+        Profile::where('user_id', Auth::user()->id)->update($data);
+
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
