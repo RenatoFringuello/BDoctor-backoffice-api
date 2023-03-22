@@ -53,7 +53,7 @@ class ProfileController extends Controller
 
         // Delete Img
         $profileImgPath = $user->profile->picture;
-        if ($profileImgPath != 'placeholder/place.jpg') {
+        if ($profileImgPath != 'assets/place.jpg') {
             Storage::delete($profileImgPath);
         }
 
