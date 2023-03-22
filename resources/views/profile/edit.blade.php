@@ -1,13 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
-            {{ __('Profile') }}
-        </h2>
+    <div class="container my-4">
         <div class="card p-4 mb-4 bg-white shadow rounded-lg">
 
             @include('partials.user-form', [
-                'user'=>$user, 'specializations' => $specializations,
+                'user' => $user,
+                'specializations' => $specializations,
                 'title' => 'Edit Doctor\'s info',
                 'method' => 'put',
                 'routeName' => 'profile.update',
