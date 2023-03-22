@@ -9,6 +9,8 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
+                            <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">Login</h3>
+
                             <div class="mb-4 row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right title">{{ __('E-Mail Address') }}</label>
