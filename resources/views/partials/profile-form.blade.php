@@ -23,10 +23,10 @@
     {{-- Bio --}}
     <label for="bio" class="title mb-2">{{ __('Add Your Biography') }}</label>
     <div class="mb-4 row form-floating">
-       
+
         <div class="col-md-12">
-            <textarea class="form-control @error('bio') is-invalid @enderror" name="bio"
-                autocomplete="bio" autofocus cols="30" rows="10">{{ old('bio', $user->profile->bio) }}
+            <textarea class=" @error('bio') is-invalid @enderror" name="bio" autocomplete="bio" autofocus cols="30"
+                rows="10">{{ old('bio', $user->profile->bio) }}
             </textarea>
 
             @error('bio')
@@ -43,8 +43,8 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class="form-control @error('services') is-invalid @enderror" name="services" 
-                autocomplete="services" autofocus cols="30" rows="10">{{ old('services', $user->profile->services) }}</textarea>
+            <textarea class="@error('services') is-invalid @enderror" name="services" autocomplete="services" autofocus
+                cols="30" rows="10">{{ old('services', $user->profile->services) }}</textarea>
 
             @error('services')
                 <span class="invalid-feedback" role="alert">
@@ -60,7 +60,8 @@
 
         <div class="col-md-6">
             <input id="telephone" type="text" class="form-control @error('telephone') is-invalid @enderror"
-                name="telephone" value="{{ old('telephone',$user->profile->telephone) }}" autocomplete="telephone" autofocus>
+                name="telephone" value="{{ old('telephone', $user->profile->telephone) }}" autocomplete="telephone"
+                autofocus>
 
             @error('telephone')
                 <span class="invalid-feedback" role="alert">
@@ -76,7 +77,8 @@
 
         <div class="col-md-6">
             <input id="curriculum" type="file" class="form-control @error('curriculum') is-invalid @enderror"
-                name="curriculum" value="{{ old('curriculum',$user->profile->curriculum) }}" autocomplete="curriculum" autofocus>
+                name="curriculum" value="{{ old('curriculum', $user->profile->curriculum) }}" autocomplete="curriculum"
+                autofocus>
 
             @error('curriculum')
                 <span class="invalid-feedback" role="alert">
