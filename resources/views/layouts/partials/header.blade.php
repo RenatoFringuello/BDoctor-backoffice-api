@@ -9,7 +9,7 @@
                         </g>
                     </svg> --}}
                 </div>
-                <img src="{{ asset('storage/assets/B-Doc-Logo.png') }}" alt="Main Logo" class="w-25">
+                <img src="{{ asset('assets/B-Doc-Logo.png') }}" alt="Main Logo" class="w-25">
                 {{-- config('app.name', 'Laravel') --}}
             </a>
 
