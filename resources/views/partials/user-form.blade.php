@@ -9,9 +9,8 @@
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
 
         <div class="col-md-6">
-            <input id="name" type="text"
-                class="form-control @error('name') is-invalid @enderror" name="name"
-                value="{{ old('name', $user->name) }}" required autocomplete="name" autofocus>
+            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                value="{{ old('name', $user->name) }}" autocomplete="name" autofocus>
 
             @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -25,9 +24,8 @@
         <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname*') }}</label>
 
         <div class="col-md-6">
-            <input id="lastname" type="text"
-                class="form-control @error('lastname') is-invalid @enderror" name="lastname"
-                value="{{ old('lastname', $user->lastname) }}" required autocomplete="lastname" autofocus>
+            <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
+                name="lastname" value="{{ old('lastname', $user->lastname) }}" autocomplete="lastname" autofocus>
 
             @error('lastname')
                 <span class="invalid-feedback" role="alert">
@@ -41,9 +39,8 @@
         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
         <div class="col-md-6">
-            <input id="email" type="email"
-                class="form-control @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email', $user->email) }}" required autocomplete="email">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                name="email" value="{{ old('email', $user->email) }}" autocomplete="email">
 
             @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -54,36 +51,32 @@
     </div>
 
     @if ($routeName === 'register')
-        
-    {{-- pw --}}
-    <div class="mb-4 row">
-        <label for="password"
-        class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
-        
-        <div class="col-md-6">
-            <input id="password" type="password"
-            class="form-control @error('password') is-invalid @enderror" name="password"
-            required autocomplete="new-password">
-            
-            @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+        {{-- pw --}}
+        <div class="mb-4 row">
+            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
+
+            <div class="col-md-6">
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                    name="password" autocomplete="new-password">
+
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
-    </div>
 
-    <div class="mb-4 row">
-        <label for="password-confirm"
-            class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
+        <div class="mb-4 row">
+            <label for="password-confirm"
+                class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
 
-        <div class="col-md-6">
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-                autocomplete="new-password">
+            <div class="col-md-6">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                    autocomplete="new-password">
+            </div>
         </div>
-    </div>
-    {{-- end pw --}}
-
+        {{-- end pw --}}
     @endif
 
 
@@ -91,14 +84,12 @@
         <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address*') }}</label>
 
         <div class="col-md-6">
-            <input id="address" type="text"
-                class="form-control @error('address') is-invalid @enderror" name="address"
-                @if ($routeName === 'register')
-                value="{{ old('address') }}" 
+            <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                name="address"
+                @if ($routeName === 'register') value="{{ old('address') }}" 
                 @else
-                value="{{ old('address', $user->profile->address) }}" 
-                @endif
-                required autocomplete="address" autofocus>
+                value="{{ old('address', $user->profile->address) }}" @endif
+                autocomplete="address" autofocus>
 
             @error('address')
                 <span class="invalid-feedback" role="alert">
@@ -112,7 +103,7 @@
     <label class="col-md-4 col-form-label text-md-right">{{ __('Specializations*') }}</label>
     <div class="mb-4 row">
         @error('specializations')
-            <span class="invalid-feedback text-danger" role="alert">
+            <span class="text-danger" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
@@ -124,8 +115,7 @@
                     value="{{ $specialization->id }}" autofocus
                     @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
                     {{-- checked true = $user->profile->specializations != null --}}
-                    @else @checked(isset($user->profile->specializations) ? $user->profile->specializations->contains($specialization->id) : false)
-                    @endif>
+                    @else @checked(isset($user->profile->specializations) ? $user->profile->specializations->contains($specialization->id) : false) @endif>
             </div>
         @endforeach
     </div>

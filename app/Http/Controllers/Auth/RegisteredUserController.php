@@ -34,21 +34,28 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $data = $request->validate([
-            // Required
-            'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'address' => ['required', 'string', 'max:255'],
-            'specializations' => ['required', 'array', 'min:1', 'exists:specializations,id'],
-            // Not Required
-            'picture' => ['image', 'nullable'],
-            'bio' => ['string'],
-            'services' => ['string'],
-            'telephone' => ['string', 'max:13', 'regex:/^[0-9]+$/'],
-            'curriculum' => ['image', 'nullable'],
-        ]);
+        $data = $request->validate(
+            [
+                // Required
+                'name' => ['required', 'string', 'max:255'],
+                'lastname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'address' => ['required', 'string', 'max:255'],
+                'specializations' => ['required', 'array', 'min:1', 'exists:specializations,id'],
+                // Not Required
+                'picture' => ['image', 'nullable'],
+                'bio' => ['string'],
+                'services' => ['string'],
+                'telephone' => ['string', 'max:13', 'regex:/^[0-9]+$/'],
+                'curriculum' => ['image', 'nullable'],
+            ],
+            [
+                'specializations.required' => 'The specializations field is required.',
+                'specializations.min' => 'Enter at least one specialization',
+                'specializations.exists' => 'The specializations not found'
+            ]
+        );
 
         // User Data
         $user = new User();
