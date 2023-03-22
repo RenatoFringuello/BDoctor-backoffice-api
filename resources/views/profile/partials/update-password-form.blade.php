@@ -44,8 +44,8 @@
             @enderror
         </div>
 
-        <div class="d-flex align-items-center gap-4">
-            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary doc-btn px-4">{{ __('Save') }}</button>
 
             @if (session('status') === 'password-updated')
             <script>

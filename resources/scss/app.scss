@@ -20,6 +20,11 @@ body {
     }
 }
 
+label.title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 
 input[type=text],
 input[type=email],
