@@ -1,11 +1,12 @@
+@use './partials/variables' as *;
 @use './partials/keyframes' as *;
 @use './partials/elements' as *;
 @use './partials/bootstrapMissings' as *;
 @import '~bootstrap/scss/bootstrap';
 
 body {
-    background: #19b2b5;
-    background: linear-gradient(0deg, #19b2b5 0%, #19b2b5 47%, #0c77aa 99%, #0c77aa 100%);
+    background: $light-doc-color;
+    background: linear-gradient(0deg, $light-doc-color 0%, $light-doc-color 47%, $main-doc-color 99%, $main-doc-color 100%);
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
