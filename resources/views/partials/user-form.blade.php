@@ -10,7 +10,7 @@
 
         <div class="col-md-6">
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                value="{{ old('name', $user->name) }}" autocomplete="name" autofocus>
+                value="{{ old('name', $user->name) }}" required minlength="2" maxlength="255"  autocomplete="name" autofocus>
 
             @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
 
         <div class="col-md-6">
             <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"
-                name="lastname" value="{{ old('lastname', $user->lastname) }}" autocomplete="lastname" autofocus>
+                name="lastname" value="{{ old('lastname', $user->lastname) }}" required minlength="2" maxlength="255" autocomplete="lastname" autofocus>
 
             @error('lastname')
                 <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
 
         <div class="col-md-6">
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                name="email" value="{{ old('email', $user->email) }}" autocomplete="email">
+                name="email" value="{{ old('email', $user->email) }}" required maxlength="255" autocomplete="email">
 
             @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
 
             <div class="col-md-6">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" autocomplete="new-password">
+                    name="password" autocomplete="new-password" required minlength="8" >
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
 
             <div class="col-md-6">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                    autocomplete="new-password">
+                    autocomplete="new-password" required minlength="8">
             </div>
         </div>
         {{-- end pw --}}
@@ -112,7 +112,7 @@
                 <div class="checkbox-wrapper-33">
                     <label class="checkbox" for="{{ $specialization->name }}">
                         {{-- Input --}}
-                        <input class="checkbox__trigger visuallyhidden" type="checkbox"
+                        <input class="checkbox__trigger visuallyhidden"   type="checkbox"
                             id="{{ $specialization->name }}" name="specializations[]"
                             value="{{ $specialization->id }}" autofocus
                             @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
