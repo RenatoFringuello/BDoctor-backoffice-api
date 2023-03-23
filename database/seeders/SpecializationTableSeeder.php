@@ -17,35 +17,82 @@ class SpecializationTableSeeder extends Seeder
     {
 
         // List of specialization
-        $specializationList = [
-            'cardiology',
-            'dermatology',
-            'oncology',
-            'pediatrics',
-            'psychology',
-            'basic medicine',
-            'child psychology',
-            'dentistry',
-            'neurology',
-            'pulmonology',
-            'allergy and immunology',
-            'geriatrics',
-            'andrology',
-            'urology',
-            'gynecology',
-            'sports medicine',
-            'surgery',
-            'heart surgery',
-            'occupational medicine',
-            'endocrinology and metabolic diseases',
-            'psychiatrist',
-            'rheumatology',
-            'traumatology'
+
+        $specializations = [
+            [
+                "name" => "cardiology"
+            ],
+            [
+                "name" => "dermatology"
+            ],
+            [
+                "name" => "oncology"
+            ],
+            [
+                "name" => "pediatrics"
+            ],
+            [
+                "name" => "psychology"
+            ],
+            [
+                "name" => "basic medicine"
+            ],
+            [
+                "name" => "child psychology"
+            ],
+            [
+                "name" => "dentistry"
+            ],
+            [
+                "name" => "neurology"
+            ],
+            [
+                "name" => "pulmonology"
+            ],
+            [
+                "name" => "allergy and immunology"
+            ],
+            [
+                "name" => "geriatrics"
+            ],
+            [
+                "name" => "andrology"
+            ],
+            [
+                "name" => "urology"
+            ],
+            [
+                "name" => "gynecology"
+            ],
+            [
+                "name" => "sports medicine"
+            ],
+            [
+                "name" => "surgery"
+            ],
+            [
+                "name" => "heart surgery"
+            ],
+            [
+                "name" => "occupational medicine"
+            ],
+            [
+                "name" => " endocrinology and metabolic diseases"
+            ],
+            [
+                "name" => " psychiatrist"
+            ],
+            [
+                "name" => "  rheumatology"
+            ],
+            [
+                "name" => "  traumatology"
+            ],
         ];
 
-        foreach ($specializationList as $specialization) {
+        foreach ($specializations as $specialization) {
             $newSpecialization = new Specialization();
-            $newSpecialization->name = $specialization;
+            $newSpecialization->name = $specialization['name'];
             $newSpecialization->save();
         }
     }
