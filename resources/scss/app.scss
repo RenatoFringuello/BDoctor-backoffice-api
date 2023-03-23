@@ -1,49 +1,16 @@
+@use './partials/keyframes' as *;
+@use './partials/elements' as *;
 @import '~bootstrap/scss/bootstrap';
 
 body {
-    background: rgb(25, 178, 181);
-    background: linear-gradient(0deg, rgba(25, 178, 181, 1) 0%, rgba(25, 178, 181, 1) 47%, rgba(12, 119, 170, 1) 99%, rgba(12, 119, 170, 1) 100%);
+    background: #19b2b5;
+    background: linear-gradient(0deg, #19b2b5 0%, #19b2b5 47%, #0c77aa 99%, #0c77aa 100%);
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
 }
 
-.doc-btn {
-    background-color: #19b2b5;
-    border: 1px solid #19b2b5;
-    padding: .4rem 1.3rem;
-
-
-    &:hover {
-        background-color: #259597;
-        border: 1px solid #259597;
-    }
-}
-
 label.title {
     font-weight: bold;
     text-transform: uppercase;
-}
-
-
-input[type=text],
-input[type=email],
-input[type=password],
-input[type=file],
-textarea {
-    border: 2px solid #259597;
-}
-
-input[type=text]:focus,
-input[type=email]:focus,
-input[type=password]:focus,
-input[type=file]:focus,
-textarea:focus {
-    border: 2px solid #259597;
-    box-shadow: #259597 0px 6px 12px -2px, rgba(255, 255, 255, 0.3) 0px 3px 7px -3px;
-    outline: none;
-}
-
-textarea {
-    width: 100%;
 }
