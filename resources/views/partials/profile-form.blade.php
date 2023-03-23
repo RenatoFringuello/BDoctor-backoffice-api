@@ -25,7 +25,7 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class=" @error('bio') is-invalid @enderror" name="bio" autocomplete="bio" autofocus cols="30"
+            <textarea class="form-control input  @error('bio') is-invalid @enderror" name="bio" autocomplete="bio" autofocus cols="30"
                 rows="10">{{ old('bio', $user->profile->bio) }}
             </textarea>
 
@@ -43,7 +43,7 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class="@error('services') is-invalid @enderror" name="services" autocomplete="services" autofocus
+            <textarea class="form-control input @error('services') is-invalid @enderror" name="services" autocomplete="services" autofocus
                 cols="30" rows="10">{{ old('services', $user->profile->services) }}</textarea>
 
             @error('services')
