@@ -5,8 +5,6 @@
     <div class="row justify-content-center">
         <div class="col pt-4">
             <div class="card">
-                {{-- <div class="card-header">{{ __('User Dashboard') }}</div> --}}
-
                 <div class="card-body">
                     <h2>Dashboard</h2>
                     @if (session('status'))

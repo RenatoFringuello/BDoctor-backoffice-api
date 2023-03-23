@@ -169,19 +169,5 @@ class UserTableSeeder extends Seeder
             $newUser->isActive = $user['isActive'];
             $newUser->save();
         }
-
-
-
-
-
-
-
-        /*  $newUser = new User();
-        $newUser->name = 'Gino';
-        $newUser->lastname = 'Ginetti';
-        $newUser->email = 'g@gmail.com';//ricordiamoci che se lo implementiamo con il for di metterlo unique
-        $newUser->password = Hash::make(12345678);
-        $newUser->isActive = true;
-        $newUser->save(); */
     }
 }

@@ -48,13 +48,6 @@
                             <div class="mb-4 row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
-                                        {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label> --}}
-
 
                                         <div class="checkbox-wrapper-33">
                                             <label class="checkbox" for="remember">
@@ -76,10 +69,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-8 offset-md-4">

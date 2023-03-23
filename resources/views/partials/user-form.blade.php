@@ -107,18 +107,6 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        {{-- @foreach ($specializations as $specialization)
-            <div class="col-6">
-                <label for="{{ $specialization->name }}"
-                    class="text-capitalize text-md-right">{{ __($specialization->name) }}</label>
-
-                <input id="{{ $specialization->name }}" type="checkbox" name="specializations[]"
-                    value="{{ $specialization->id }}" autofocus
-                    @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
-                    {{-- checked true = $user->profile->specializations != null --}}
-        {{-- @else @checked(isset($user->profile->specializations) ? $user->profile->specializations->contains($specialization->id) : false) @endif> 
-            </div>
-        @endforeach --}}
         @foreach ($specializations as $specialization)
             <div class="col-6 mb-2">
                 <div class="checkbox-wrapper-33">

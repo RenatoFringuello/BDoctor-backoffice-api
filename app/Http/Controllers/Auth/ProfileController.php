@@ -30,7 +30,6 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        // $data = $request->all();//da fare il validate
         $data = $request->validate(
             [
                 // Required
@@ -58,12 +57,8 @@ class ProfileController extends Controller
             ]
         );
 
-        // dd($profile);
         $profile = Auth::user()->profile;
 
-        // $imgPath = Storage::put('placeholder/imgs', $data['picture']);
-
-        // $imgPath = Storage::put('placeholder/imgs', $data['picture']);
         $data['picture'] = (!isset($data['picture'])) ? 'assets/place.jpg' : Storage::put('/placeholder/imgs', $data['picture']);
         $data['curriculum'] = (!isset($data['curriculum'])) ? 'null' : Storage::put('/placeholder/cv', $data['curriculum']);
         $profile->update($data);
