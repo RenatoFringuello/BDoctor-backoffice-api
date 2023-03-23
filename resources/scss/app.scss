@@ -1,5 +1,6 @@
 @use './partials/keyframes' as *;
 @use './partials/elements' as *;
+@use './partials/bootstrapMissings' as *;
 @import '~bootstrap/scss/bootstrap';
 
 body {
