@@ -35,8 +35,8 @@ class ProfileController extends Controller
             [
                 // Required
                 'picture' => ['image', 'nullable'],
-                'bio' => ['string', 'min:5', 'nullable'],
-                'services' => ['string', 'nullable'],
+                'bio' => ['string', 'max:1000', 'nullable'],
+                'services' => ['string', 'max:1000', 'nullable'],
                 'telephone' => ['string', 'max:13', 'regex:/^[0-9]+$/', 'nullable'],
                 'curriculum' => ['mimes:jpg,pdf,png', 'max:800', 'nullable'],
             ],
@@ -44,9 +44,10 @@ class ProfileController extends Controller
                 'picture.image' => 'The file must be an image',
 
                 'bio.string' => 'The field must be of type string',
-                'bio.min' => 'Enter at least 5 characters',
-
+                'bio.max' => 'Enter a maximum of 1000 characters',
+                
                 'service.string' => 'The field must be of type string',
+                'service.max' => 'Enter a maximum of 1000 characters',
 
                 'telephone.string' => 'The field must be of type string',
                 'telephone.regex' => 'The number entered is incorrect',
