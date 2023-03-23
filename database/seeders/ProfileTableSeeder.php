@@ -180,9 +180,10 @@ class ProfileTableSeeder extends Seeder
                 "telephone" => "079299525",
             ]
         ];
-        foreach ($profiles as $profile) {
+        $users = User::all();
+        foreach ($profiles as $i=>$profile) {
             $newProfile = new Profile();
-            $newProfile->user_id = User::inRandomOrder()->first()->id;
+            $newProfile->user_id = $users[$i]->id;
             $newProfile->bio = $profile['bio'];
             $newProfile->picture = $profile['picture'];
             $newProfile->curriculum = $profile['curriculum'];
