@@ -112,7 +112,7 @@
                 <div class="checkbox-wrapper-33">
                     <label class="checkbox" for="{{ $specialization->name }}">
                         {{-- Input --}}
-                        <input class="checkbox__trigger visuallyhidden"   type="checkbox"
+                        <input class="checkbox__trigger visuallyhidden" required:valid   type="checkbox"
                             id="{{ $specialization->name }}" name="specializations[]"
                             value="{{ $specialization->id }}" autofocus
                             @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))

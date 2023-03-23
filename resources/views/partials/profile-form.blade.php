@@ -10,7 +10,7 @@
 
         <div class="col-md-6">
             <input id="picture" type="file" class="form-control @error('picture') is-invalid @enderror"
-                name="picture" value="{{ old('picture', $user->profile->picture) }}" autocomplete="picture" autofocus>
+                name="picture" value="{{ old('picture', $user->profile->picture) }}" autocomplete="picture" autofocus accept="image/*">
 
             @error('picture')
                 <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
 
         <div class="col-md-12">
             <textarea class=" @error('bio') is-invalid @enderror" name="bio" autocomplete="bio" autofocus cols="30"
-                rows="10">{{ old('bio', $user->profile->bio) }}
+                rows="10" minlength="10" maxlength="1000">{{ old('bio', $user->profile->bio) }}
             </textarea>
 
             @error('bio')
@@ -44,7 +44,7 @@
 
         <div class="col-md-12">
             <textarea class="@error('services') is-invalid @enderror" name="services" autocomplete="services" autofocus
-                cols="30" rows="10">{{ old('services', $user->profile->services) }}</textarea>
+                cols="30" rows="10" minlength="10" maxlength="1000" >{{ old('services', $user->profile->services) }}</textarea>
 
             @error('services')
                 <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
         <div class="col-md-6">
             <input id="telephone" type="text" class="form-control @error('telephone') is-invalid @enderror"
                 name="telephone" value="{{ old('telephone', $user->profile->telephone) }}" autocomplete="telephone"
-                autofocus>
+                autofocus minlength="9">
 
             @error('telephone')
                 <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
         <div class="col-md-6">
             <input id="curriculum" type="file" class="form-control @error('curriculum') is-invalid @enderror"
                 name="curriculum" value="{{ old('curriculum', $user->profile->curriculum) }}" autocomplete="curriculum"
-                autofocus>
+                autofocus accept="image/*">
 
             @error('curriculum')
                 <span class="invalid-feedback" role="alert">
