@@ -154,12 +154,12 @@
 
         @if ($user->isActive)
             <input type="hidden" name="isActive" value="0">
-            <button type="submit" class="btn doc-btn bg-unavailable fs-small">
+            <button type="submit" class="btn doc-btn bg-unavailable fs-small w-100">
                 {{ __('Set to Unavailable') }}
             </button>
         @else
             <input type="hidden" name="isActive" value="1">
-            <button type="submit" class="btn doc-btn bg-available fs-small">
+            <button type="submit" class="btn doc-btn bg-available fs-small w-100">
                 {{ __('Set to Available') }}
             </button>
         @endif
