@@ -59,6 +59,12 @@ class ProfileController extends Controller
 
         $profile = Auth::user()->profile;
 
+        //DELETE old pic 
+        if(!str_starts_with($profile->picture, 'http')){
+            Storage::delete('/placeholder/imgs', $profile->picture);
+        }
+
+        //and then add new
         $data['picture'] = (!isset($data['picture'])) ? 'assets/place.jpg' : Storage::put('/placeholder/imgs', $data['picture']);
         $data['curriculum'] = (!isset($data['curriculum'])) ? 'null' : Storage::put('/placeholder/cv', $data['curriculum']);
         $profile->update($data);
