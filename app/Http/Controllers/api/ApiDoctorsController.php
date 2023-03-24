@@ -24,6 +24,11 @@ class ApiDoctorsController extends Controller
                 $query->where('name', $request->specializations);
             });
         }
+        if ($request->sponsors) {
+            $user_query->whereHas('sponsors', function ($query) use ($request) {
+                $query->where('type', $request->sponsors);
+            });
+        }
         $users = $user_query->paginate(10);
         return response()->json([
             'success' => true,
