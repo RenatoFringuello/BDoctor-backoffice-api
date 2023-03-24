@@ -35,4 +35,14 @@ class ApiDoctorsController extends Controller
             'results' => $users
         ]);
     }
+
+    public function show(User $user)
+    {
+        $user = User::with('profile', 'profile.specializations', 'sponsors')->findOrFail($user->id);
+
+        return response()->json([
+            'success' => true,
+            'results' => $user,
+        ]);
+    }
 }
