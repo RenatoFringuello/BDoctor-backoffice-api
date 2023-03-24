@@ -2,6 +2,8 @@
     @csrf
     @method($method)
 
+    @if (isset($specializations))
+        
     <h3 class="mt-5 mb-5 fw-bold text-uppercase text-center">{{ $title }}</h3>
 
     {{-- input row --}}
@@ -140,4 +142,27 @@
             </button>
         </div>
     </div>
+
+    @else
+        {{-- Button --}}
+        {{-- that's to avoid the validated --}}
+        <input type="hidden" name="address" value="{{$user->profile->address}}">
+        <input type="hidden" name="lastname" value="{{$user->lastname}}">
+        @foreach ($user->profile->specializations as  $specialization)
+            <input type="hidden" name="specializations[]" value="{{$specialization->id}}">
+        @endforeach
+
+        @if ($user->isActive)
+            <input type="hidden" name="isActive" value="0">
+            <button type="submit" class="btn doc-btn bg-unavailable fs-small w-100">
+                {{ __('Set to Unavailable') }}
+            </button>
+        @else
+            <input type="hidden" name="isActive" value="1">
+            <button type="submit" class="btn doc-btn bg-available fs-small w-100">
+                {{ __('Set to Available') }}
+            </button>
+        @endif
+
+    @endif
 </form>

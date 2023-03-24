@@ -5,3 +5,17 @@
     color: white !important;
     background-color: $main-doc-color !important;
 }
+
+//fonts
+.fs-small{
+    font-size: small !important;
+}
+
+.bg-available{
+    background-color: $av-light-available !important;
+    border-color: $av-light-available !important;
+}
+.bg-unavailable{
+    background-color: $av-light-unavailable !important;
+    border-color: $av-light-unavailable !important;
+}
