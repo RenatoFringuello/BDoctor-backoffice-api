@@ -13,9 +13,18 @@ class ApiDoctorsController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('profile', 'profile.specializations', 'sponsors')->paginate(10);
+        //restituisce tutti i dottori
+        $user_query = User::with(['profile', 'profile.specializations', 'sponsors']);
+        if ($request->specializations) {
+
+            //filtra i risultati per specializzazione
+            $user_query->whereHas('profile.specializations', function ($query) use ($request) {
+                $query->where('name', $request->specializations);
+            });
+        }
+        $users = $user_query->paginate(10);
         return response()->json([
             'success' => true,
             'results' => $users
