@@ -17,14 +17,53 @@ textarea:focus {
 /* buttons */
 .doc-btn {
     color: white !important;
+    padding: .4rem 1.3rem !important;
     background-color: $light-doc-color !important;
     border: 1px solid $light-doc-color !important;
-    padding: .4rem 1.3rem !important;
+    
+    &.bg-available{
+        background-color: $av-light-available !important;
+        border-color: $av-light-available !important;
+    }
+    &.bg-unavailable{
+        background-color: $av-light-unavailable !important;
+        border-color: $av-light-unavailable !important;
+    }
 
     &:hover {
         background-color: $main-doc-color !important;
-        border: 1px solid $main-doc-color !important;
+        border-color: $main-doc-color !important;
+        
+        &.bg-available{
+            background-color: $av-available !important;
+            border-color: $av-available !important;
+        }
+        &.bg-unavailable{
+            background-color: $av-unavailable !important;
+            border-color: $av-unavailable !important;
+        }
     }
+}
+
+// cards border
+.custom-card{
+    border-radius: .7rem;
+    padding: .5rem;
+    color: white;
+    &.blue{
+        background:$light-pro-color;
+    }
+    &.cyan{
+        background:$light-doc-color;
+    }
+}
+
+//availability-dot
+.availability-dot{
+    display: inline-block;
+    width:  12px;
+    height: 12px;
+    cursor:help;
 }
 
 /* checkboxes */
