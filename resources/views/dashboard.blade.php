@@ -61,7 +61,7 @@
                         {{-- feedback and stats --}}
                         <div class="col-12 col-lg-8">
                             <div class="row g-3">
-                                <div class="col-12 col-lg-4">
+                                <div class="col-12 col-md-4">
                                     <div class="custom-card blue">
                                         <label class="title mb-2">Messages</label>
                                         <ul class="list-group">
@@ -72,7 +72,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-8">
+                                <div class="col-12 col-md-8">
                                     <div class="custom-card cyan">
                                         <label class="title mb-2">Reviews</label>
                                         <ul class="list-group">
