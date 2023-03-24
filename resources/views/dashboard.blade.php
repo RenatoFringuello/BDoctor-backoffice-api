@@ -20,10 +20,7 @@
                         {{-- profile --}}
                         <div class="col-12 col-lg-4">
                             <div class="custom-card blue">
-                                <div>
-                                    <label class="title mb-2">Profile</label>
-                                </div>
-                                <div class="row gx-2">
+                                <div class="row gx-2 mt-2">
                                     <div class="col-12 col-sm-5">
                                         {{-- img --}}
                                         <img class="img-fluid rounded-circle p-2"
@@ -41,7 +38,9 @@
                                             <span class="fs-5">{{Auth::user()->lastname}}</span>
                                             <span class="availability-dot rounded-circle @if(Auth::user()->isActive) bg-available @else bg-unavailable @endif" 
                                                     title="@if(Auth::user()->isActive) Available @else Unavailable @endif"></span>
-                                            <pre class="mb-3">{{Auth::user()->email}}</pre>
+                                            <pre class="mb-2">{{Auth::user()->email}}</pre>
+                                            <div>{{Auth::user()->profile->address}}</div>
+                                            <div class="mb-2">{{Auth::user()->profile->telephone}}</div>
                                             {{-- toggle isActive --}}
                                             @include('partials.user-form', [
                                                 'user' => Auth::user(),
@@ -53,7 +52,12 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <p class="p-2">{{Auth::user()->profile->bio}}</p>
+                                        <div class="p-2">
+                                            <div class="mb-2 fs-5">Bio</div>
+                                            <p class="card text-dark p-2">{{Auth::user()->profile->bio}}</p>
+                                            <div class="mb-2 fs-5">Services</div>
+                                            <p class="card text-dark m-0 p-2">{{Auth::user()->profile->bio}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
