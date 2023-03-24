@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <div>
-                <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                {{-- the link must be changed on deploy --}}
+                <a class="navbar-brand" href="http://localhost:5173/">
                     <img src="{{ asset('assets/B-Doc-Logo.png') }}" alt="Main Logo" class="w-25">
                 </a>
             </div>
