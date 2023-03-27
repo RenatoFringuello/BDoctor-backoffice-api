@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ApiDoctorsController;
 use App\Http\Controllers\api\ApiSpecializationsController;
+use App\Http\Controllers\api\ApiMessageController;
+
 
 
 /*
@@ -25,3 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/doctors', [ApiDoctorsController::class, 'index'])->name('api.doctors.index');
 Route::get('/specializations', [ApiSpecializationsController::class, 'index'])->name('api.specializations.index');
 Route::get('/doctors/{user}', [ApiDoctorsController::class, 'show'])->name('api.doctors.show');
+
+
+// API POST
+
+Route::post('/message', [ApiMessageController::class, 'store']);
