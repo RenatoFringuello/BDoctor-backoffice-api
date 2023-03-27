@@ -20,7 +20,33 @@
 </head>
 
 <body>
-    <h1>ciao</h1>
+    <div class="container p-5">
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Content</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($messages as $message)
+                    <tr>
+                        <th scope="row">{{$message->id}}</th>
+                        <td>{{$message->name}}</td>
+                        <td>{{$message->lastname}}</td>
+                        <td>{{$message->email}}</td>
+                        <td>{{$message->content}}</td>
+                       
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
+    </div>
 </body>
 
 </html>

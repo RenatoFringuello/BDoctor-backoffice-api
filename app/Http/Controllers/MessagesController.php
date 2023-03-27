@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends Controller
 {
@@ -15,7 +16,7 @@ class MessagesController extends Controller
     public function index()
     {
         //
-        $messages = Message::all();
+        $messages = Message::all()->where('user_id', Auth::user()->id);
         return view('messages.index', compact('messages'));
     }
 
