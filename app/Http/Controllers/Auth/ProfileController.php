@@ -44,7 +44,7 @@ class ProfileController extends Controller
 
                 'bio.string' => 'The field must be of type string',
                 'bio.max' => 'Enter a maximum of 1000 characters',
-                
+
                 'service.string' => 'The field must be of type string',
                 'service.max' => 'Enter a maximum of 1000 characters',
 
@@ -59,13 +59,14 @@ class ProfileController extends Controller
 
         $profile = Auth::user()->profile;
 
-        //DELETE old pic 
-        if(!str_starts_with($profile->picture, 'http')){
+        // dd($request->route()->getName());
+        //DELETE old pic
+        if (!str_starts_with($profile->picture, 'http') && $request->route()->getName() != 'profile.register.update') {
             Storage::delete('/placeholder/imgs', $profile->picture);
         }
 
         //and then add new
-        $data['picture'] = (!isset($data['picture'])) ? 'assets/place.jpg' : Storage::put('/placeholder/imgs', $data['picture']);
+        $data['picture'] = (!isset($data['picture'])) ? '/placeholder/imgs/place.jpg' : Storage::put('/placeholder/imgs', $data['picture']);
         $data['curriculum'] = (!isset($data['curriculum'])) ? 'null' : Storage::put('/placeholder/cv', $data['curriculum']);
         $profile->update($data);
 
