@@ -18,41 +18,27 @@ class ApiDoctorsController extends Controller
     public function index(Request $request)
     {
         //restituisce tutti i dottori
-        //$user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews']);
-        $user_query = User::with(['reviews']);
+        $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews']);
+        
         if ($request->specializations) {
-
-            //filtra i risultati per specializzazione
-            // $user_query->select('users.*', DB::raw('round(avg(\'reviews.rating\'), 0)as average'))->whereHas('profile.specializations', function ($query) use ($request) {
-            //     $query->where('name', $request->specializations);
-            // })->groupBy('users.id')->orderBy('average')->get();
-            $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
-                                ->leftJoin('reviews', 'reviews.user_id', '=', 'users.id')
-                                ->select(array('users.*',
-                                        DB::raw('ROUND(AVG(rating)) as ratings_average')
-                                    ))->whereHas('profile.specializations', function ($query) use ($request) {
-                                        $query->where('name', $request->specializations);
-                                    })
-                                ->groupBy('id')
-                                ->orderBy('ratings_average', 'DESC')
-                                ->get();
+            //filtra i risultati per specializzazione con la media dei voti e il numero di recensioni
+            $user_query->withAvg('reviews', 'rating')
+                        ->withCount('reviews')
+                        ->whereHas('profile.specializations', function ($query) use ($request) {
+                            $query->where('name', $request->specializations);
+                        });
+                        // ->orderBy('reviews_avg_rating', 'DESC')->get(); //questo va messo se nei params viene richiesto il filtro per media voti
         }
-        /* SELECT ROUND(AVG(`reviews`.`rating`),0) AS `media`, `users`.*
-        FROM `users`
-        JOIN `reviews` ON `reviews`.`user_id`=`users`.`id`
-        GROUP BY `users`.`id`
-        ORDER BY `media` DESC; */
-
 
         /*  if ($request->sponsors) {
             $user_query->whereHas('sponsors', function ($query) use ($request) {
                 $query->where('type', $request->sponsors);
             });
         } */
-        // $users = $user_query->paginate(10);
+        $users = $user_query->paginate(10);
         return response()->json([
             'success' => true,
-            'results' => $user_query
+            'results' => $users
         ]);
     }
 
