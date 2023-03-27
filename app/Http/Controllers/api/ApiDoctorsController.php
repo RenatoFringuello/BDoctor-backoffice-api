@@ -13,33 +13,37 @@ use Illuminate\Support\Facades\DB;
 
 class ApiDoctorsController extends Controller
 {
-    //
-
     public function index(Request $request)
     {
-        //restituisce tutti i dottori
-        $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews']);
-        
         if ($request->specializations) {
-            //filtra i risultati per specializzazione con la media dei voti e il numero di recensioni
-            $user_query->withAvg('reviews', 'rating')
-                        ->withCount('reviews')
-                        ->whereHas('profile.specializations', function ($query) use ($request) {
-                            $query->where('name', $request->specializations);
-                        });
-                        // ->orderBy('reviews_avg_rating', 'DESC')->get(); //questo va messo se nei params viene richiesto il filtro per media voti
-        }
+            //salvano la richiesta di un eventuale order by 
+            $sortByAvg = ($request->sortByAvg) ? 'reviews_avg_rating' : 'id';
+            $sortByCount = ($request->sortByCount) ? 'reviews_count' : 'id';
 
-        /*  if ($request->sponsors) {
-            $user_query->whereHas('sponsors', function ($query) use ($request) {
-                $query->where('type', $request->sponsors);
-            });
-        } */
-        $users = $user_query->paginate(10);
-        return response()->json([
-            'success' => true,
-            'results' => $users
-        ]);
+            //filtra i risultati per specializzazione(sempre); 
+            //l'order by $sortByAvg e $sortByCount (se non esistono le fa per user.id)
+            $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+                                ->withAvg('reviews', 'rating')
+                                ->withCount('reviews')
+                                ->whereHas('profile.specializations', function ($query) use ($request) {
+                                    $query->where('name', $request->specializations);
+                                })
+                                ->orderBy($sortByAvg, 'DESC')
+                                ->orderBy($sortByCount, 'DESC')
+                                ->paginate(10);
+            
+            return response()->json([
+                'success' => true,
+                'results' => $user_query
+            ]);
+        }
+        else{
+            //se la ricerca non viene fatta per specializzazione allora return false
+            return response()->json([
+                'success' => false,
+                'results' => null
+            ]);
+        }
     }
 
     public function show(User $user)
