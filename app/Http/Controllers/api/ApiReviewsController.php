@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ApiMessagesController extends Controller
+class ApiReviewsController extends Controller
 {
     public function store(Request $request)
     {
@@ -17,10 +17,12 @@ class ApiMessagesController extends Controller
         $validator = Validator::make(
             $data,
             [
+                'user_id' => 'required|numeric',
+                'email' => 'required|email',
                 'name' => 'required|string',
                 'lastname' => 'required|string',
-                'email' => 'required|email',
                 'content ' => 'required|text',
+                'rating' => 'required|number|min:1|max:10'
             ]
         );
 
@@ -33,7 +35,7 @@ class ApiMessagesController extends Controller
         };
 
         // Store the message
-        $newMail = new Message();
+        $newMail = new Review();
         $newMail->fill($data);
         $newMail->save();
 

@@ -3,10 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ApiDoctorsController;
+use App\Http\Controllers\Api\ApiMessagesController;
 use App\Http\Controllers\api\ApiSpecializationsController;
-use App\Http\Controllers\api\ApiMessageController;
-
-
+use App\Http\Controllers\Api\ApiReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +29,5 @@ Route::get('/doctors/{user}', [ApiDoctorsController::class, 'show'])->name('api.
 
 
 // API POST
-
-Route::post('/message', [ApiMessageController::class, 'store']);
+Route::post('/message', [ApiMessagesController::class, 'store']);
+Route::post('/review', [ApiReviewsController::class, 'store']);
