@@ -23,21 +23,20 @@ class ApiDoctorsController extends Controller
             //filtra i risultati per specializzazione(sempre); 
             //l'order by $sortByAvg e $sortByCount (se non esistono le fa per user.id)
             $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
-                                ->withAvg('reviews', 'rating')
-                                ->withCount('reviews')
-                                ->whereHas('profile.specializations', function ($query) use ($request) {
-                                    $query->where('name', $request->specializations);
-                                })
-                                ->orderBy($sortByAvg, 'DESC')
-                                ->orderBy($sortByCount, 'DESC')
-                                ->paginate(10);
-            
+                ->withAvg('reviews', 'rating')
+                ->withCount('reviews')
+                ->whereHas('profile.specializations', function ($query) use ($request) {
+                    $query->where('name', $request->specializations);
+                })
+                ->orderBy($sortByAvg, 'DESC')
+                ->orderBy($sortByCount, 'DESC') //to fix
+                ->paginate(10);
+
             return response()->json([
                 'success' => true,
                 'results' => $user_query
             ]);
-        }
-        else{
+        } else {
             //se la ricerca non viene fatta per specializzazione allora return false
             return response()->json([
                 'success' => false,
