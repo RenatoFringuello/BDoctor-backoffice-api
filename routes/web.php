@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
+use App\Http\Controllers\Auth\MessagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
 Route::middleware(['auth', 'verified'])->group(function () {
     // Profile Edit
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
