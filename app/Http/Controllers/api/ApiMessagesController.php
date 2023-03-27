@@ -12,7 +12,7 @@ class ApiMessagesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        // dd($data);
 
         $validator = Validator::make(
             $data,
@@ -20,7 +20,7 @@ class ApiMessagesController extends Controller
                 'name' => 'required|string',
                 'lastname' => 'required|string',
                 'email' => 'required|email',
-                'content ' => 'required|text',
+                'content' => 'required|text',
             ]
         );
 

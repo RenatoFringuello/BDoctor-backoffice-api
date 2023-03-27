@@ -12,7 +12,7 @@ class ApiReviewsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        // dd($data);
 
         $validator = Validator::make(
             $data,
@@ -21,8 +21,8 @@ class ApiReviewsController extends Controller
                 'email' => 'required|email',
                 'name' => 'required|string',
                 'lastname' => 'required|string',
-                'content ' => 'required|text',
-                'rating' => 'required|number|min:1|max:10'
+                'content' => 'required|string',
+                'rating' => 'required|numeric'
             ]
         );
 
@@ -30,7 +30,7 @@ class ApiReviewsController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->error()
+                'errors' => $validator->errors()
             ]);
         };
 
