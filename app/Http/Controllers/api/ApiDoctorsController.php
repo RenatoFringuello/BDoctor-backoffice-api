@@ -23,9 +23,19 @@ class ApiDoctorsController extends Controller
         if ($request->specializations) {
 
             //filtra i risultati per specializzazione
-            $user_query->select('users.*', DB::raw('round(avg(\'reviews.rating\'), 0)as average'))->whereHas('profile.specializations', function ($query) use ($request) {
-                $query->where('name', $request->specializations);
-            })->groupBy('users.id')->orderBy('average')->get();
+            // $user_query->select('users.*', DB::raw('round(avg(\'reviews.rating\'), 0)as average'))->whereHas('profile.specializations', function ($query) use ($request) {
+            //     $query->where('name', $request->specializations);
+            // })->groupBy('users.id')->orderBy('average')->get();
+            $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+                                ->leftJoin('reviews', 'reviews.user_id', '=', 'users.id')
+                                ->select(array('users.*',
+                                        DB::raw('ROUND(AVG(rating)) as ratings_average')
+                                    ))->whereHas('profile.specializations', function ($query) use ($request) {
+                                        $query->where('name', $request->specializations);
+                                    })
+                                ->groupBy('id')
+                                ->orderBy('ratings_average', 'DESC')
+                                ->get();
         }
         /* SELECT ROUND(AVG(`reviews`.`rating`),0) AS `media`, `users`.*
         FROM `users`
@@ -39,10 +49,10 @@ class ApiDoctorsController extends Controller
                 $query->where('type', $request->sponsors);
             });
         } */
-        $users = $user_query->paginate(10);
+        // $users = $user_query->paginate(10);
         return response()->json([
             'success' => true,
-            'results' => $users
+            'results' => $user_query
         ]);
     }
 
