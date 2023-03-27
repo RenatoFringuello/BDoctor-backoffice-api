@@ -10,7 +10,7 @@ class ApiSpecializationsController extends Controller
 {
     public function index()
     {
-        $specializations = Specialization::all();
+        $specializations = Specialization::orderBy('name')->get();
         return response()->json([
             'success' => true,
             'results' => $specializations
