@@ -53,14 +53,3 @@ class ApiDoctorsController extends Controller
         ]);
     }
 }
-
-
-// $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
-// ->withAvg('reviews', 'rating')
-// ->withCount('reviews')
-// ->whereHas('profile.specializations', function ($query) use ($request) {
-//     $query->where('name', $request->specializations);
-// })
-// ->orderBy($sortByAvg, 'DESC')
-// ->orderBy($sortByCount, 'DESC')
-// ->paginate(10);
