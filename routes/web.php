@@ -33,7 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::put('profile/update', [AuthProfileController::class, 'update'])
         ->name('profile.register.update');
-    Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+    //Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+    Route::resource('/messages', MessagesController::class);
 });
 
 require __DIR__ . '/auth.php';
