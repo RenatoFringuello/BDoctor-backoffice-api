@@ -68,12 +68,23 @@
                                 <div class="col-12 col-md-4">
                                     <div class="custom-card blue">
                                         <label class="title mb-2">Messages</label>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">item</li>
-                                            <li class="list-group-item">item</li>
-                                            <li class="list-group-item">item</li>
-                                            <li class="list-group-item">item</li>
-                                        </ul>
+                                        <a href="#" class="text-black text-decoration-none">
+                                            <ul class="list-group">
+                                                @foreach ($messages->take(5) as $message)
+                                                    <li class="list-group-item py-1">
+                                                        <div class="row text-decoration-none">
+                                                            <div class="col-10">
+                                                                <div>{{ $message->name }}</div>
+                                                                <pre class="fs-small text-wrap text-secondary">{{ $message->email }}</pre>
+                                                            </div>
+                                                            <div class="col-2 d-flex">
+                                                                <div class="availability-dot rounded-circle bg-primary m-auto"></div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-8">

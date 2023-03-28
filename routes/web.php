@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $messages = Auth::user()->messages;
+
+        return view('dashboard', compact('messages'));
     })->name('dashboard');
 
     // Profile Register
