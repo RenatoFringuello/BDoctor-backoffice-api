@@ -80,11 +80,13 @@ class MessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Message $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Message $message)
     {
         //
+        $message->delete();
+        return redirect()->route('messages.index');
     }
 }
