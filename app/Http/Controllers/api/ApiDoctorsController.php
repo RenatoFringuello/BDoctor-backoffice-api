@@ -42,7 +42,10 @@ class ApiDoctorsController extends Controller
 
     public function show(User $user)
     {
-        $user = User::with('profile', 'profile.specializations', 'sponsors')->findOrFail($user->id);
+        $user = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+            ->withAvg('reviews', 'rating')
+            ->withCount('reviews')
+            ->findOrFail($user->id);
 
         return response()->json([
             'success' => true,
@@ -50,3 +53,14 @@ class ApiDoctorsController extends Controller
         ]);
     }
 }
+
+
+// $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+// ->withAvg('reviews', 'rating')
+// ->withCount('reviews')
+// ->whereHas('profile.specializations', function ($query) use ($request) {
+//     $query->where('name', $request->specializations);
+// })
+// ->orderBy($sortByAvg, 'DESC')
+// ->orderBy($sortByCount, 'DESC')
+// ->paginate(10);
