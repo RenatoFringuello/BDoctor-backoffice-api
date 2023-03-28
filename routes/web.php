@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('profile.register.update');
     //Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
     Route::resource('/messages', MessagesController::class);
+    Route::resource('/reviews', ReviewsController::class);
 });
 
 require __DIR__ . '/auth.php';
