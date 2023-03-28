@@ -22,9 +22,9 @@
 <body>
     <div class="container p-5">
         <table class="table table-striped">
-            <thead class="table-dark">
+            <thead class="table">
                 <tr>
-                    <th scope="col">ID</th>
+                    
                     <th scope="col">Name</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">Email</th>
@@ -40,6 +40,17 @@
                         <td>{{$message->lastname}}</td>
                         <td>{{$message->email}}</td>
                         <td>{{$message->content}}</td>
+                        <td>
+                            <form action="{{route('messages.destroy', $message->id)}}" method="post" class="d-inline-block form-deleter pt-3">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger"> Delete </button>
+                            </form>
+                        </td>
+
+
+
                        
                     </tr>
                 @endforeach
