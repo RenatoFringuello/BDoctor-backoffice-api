@@ -5,11 +5,6 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Specialization;
-use Illuminate\Support\Facades\DB;
-
-// use App\Models\Profile;
-// use App\Models\Sponsor;
 
 class ApiDoctorsController extends Controller
 {
@@ -29,7 +24,7 @@ class ApiDoctorsController extends Controller
                     $query->where('name', $request->specializations);
                 })
                 ->orderBy($sortByAvg, 'DESC')
-                ->orderBy($sortByCount, 'DESC') //to fix
+                ->orderBy($sortByCount, 'DESC')
                 ->paginate(10);
 
             return response()->json([
