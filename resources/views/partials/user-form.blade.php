@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route($routeName) }}">
+<form method="POST" action="{{ route($routeName) }}" id="form">
     @csrf
     @method($method)
 
@@ -137,7 +137,7 @@
     {{-- Button Send --}}
     <div class="mb-4 row mb-0">
         <div class="text-end me-5">
-            <button type="submit" class="btn doc-btn">
+            <button type="submit" class="btn doc-btn" id="send">
                 {{ __('Send') }}
             </button>
         </div>
