@@ -13,10 +13,12 @@ class ReviewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $reviews = Review::all()->where('user_id', Auth::user()->id);
-        return view('reviews.index', compact('reviews'));
+        $reviewSelected = $request->key;
+
+        return view('reviews.index', compact('reviews', 'reviewSelected'));
     }
 
     /**
