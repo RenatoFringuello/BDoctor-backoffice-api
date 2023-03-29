@@ -12,7 +12,7 @@ myForm.addEventListener("submit", (event) => {
 
 
     } else {
-        alert('the pass are the same')
+
         myForm.submit()
     }
 
