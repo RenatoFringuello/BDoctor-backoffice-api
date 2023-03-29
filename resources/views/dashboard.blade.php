@@ -97,8 +97,6 @@
             </div>
         </div>
 
-        <div class="row">
-            @include('braintree')
-        </div>
+        <a href="{{ route('payment') }}" class="btn">A</a>
     </div>
 @endsection

@@ -1,35 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Payment</title>
-    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Braintree-Demo</title>
+    <script src="https://js.braintreegateway.com/web/dropin/1.34.0/js/dropin.min.js"></script>
 </head>
 
 <body>
-    <div class="py-12">
-        @csrf
-        <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
-        <div style="display: flex;justify-content: center;align-items: center; color: white">
-            <a href="{{ route('payment') }}" id="submit-button" class="btn btn-sm btn-success">Submit payment</a>
-        </div>
-        <script>
-            var button = document.querySelector('#submit-button');
-            braintree.dropin.create({
-                authorization: '18735703173',
-                container: '#dropin-container'
-            }, function(createErr, instance) {
-                button.addEventListener('click', function() {
-                    instance.requestPaymentMethod(function(err, payload {
-                        // Submit payload.nonce to your server
-                    });)
+    <form id="payment-form" action="/route/on/your/server" method="post">
+        <!-- Putting the empty container you plan to pass to
+          `braintree.dropin.create` inside a form will make layout and flow
+          easier to manage -->
+        <div id="dropin-container"></div>
+        <input type="submit" />
+        <input type="hidden" id="nonce" name="payment_method_nonce" />
+    </form>
+    @dump($token)
+    <script>
+        const form = document.getElementById('payment-form');
+
+        braintree.dropin.create({
+            authorization: {!! json_encode($token) !!},
+            container: '#dropin-container'
+        }, (error, dropinInstance) => {
+            if (error) console.error(error);
+
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+
+                dropinInstance.requestPaymentMethod((error, payload) => {
+                    if (error) console.error(error);
+
+                    document.getElementById('nonce').value = payload.nonce;
+                    form.submit();
                 });
             });
-        </script>
-    </div>
+        });
+    </script>
 </body>
 
 </html>

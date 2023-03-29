@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
+    // Payment
+    Laravel\Cashier\CashierServiceProvider::class,
 
     /*
     |--------------------------------------------------------------------------

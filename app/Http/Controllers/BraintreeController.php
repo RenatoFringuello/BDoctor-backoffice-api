@@ -13,8 +13,8 @@ class BraintreeController extends Controller
         $gateway = new Braintree_Gateway([
             'environment' => 'sandbox',
             'merchantId' => '3xb8y75mrh9cyy98',
-            'publicKey' => '6d4ndqxfvsv44d79',
-            'privateKey' => 'b47e33f64c39986020d76aaabbcce82d'
+            'publicKey' => 'hmk35pf9y73mhr22',
+            'privateKey' => '6743c0d02106c81481dac2a90458c7d7'
         ]);
         $clientToken = $gateway->clientToken()->generate();
         return view('braintree', ['token' => $clientToken]);
