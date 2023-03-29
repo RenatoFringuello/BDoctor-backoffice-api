@@ -70,6 +70,7 @@ class ProfileController extends Controller
         $data['curriculum'] = (!isset($data['curriculum'])) ? 'null' : Storage::put('/placeholder/cv', $data['curriculum']);
         $profile->update($data);
 
-        return view('dashboard', compact('profile'));
+        // return view('dashboard', compact('profile'));
+        return redirect()->route('dashboard');
     }
 }
