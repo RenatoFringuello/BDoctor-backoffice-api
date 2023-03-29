@@ -13,11 +13,12 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
         $messages = Message::all()->where('user_id', Auth::user()->id);
-        return view('messages.index', compact('messages'));
+        $messageSelected = $request->key;
+
+        return view('messages.index', compact('messages', 'messageSelected'));
     }
 
     /**

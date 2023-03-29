@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
@@ -26,12 +25,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard', function (Request $request) {
+    Route::get('/dashboard', function () {
         $messages = Auth::user()->messages;
-        
-        $messageSelected = $request->key;
-
-        return view('dashboard', compact('messages', 'messageSelected'));
+        return view('dashboard', compact('messages'));
     })->name('dashboard');
 
     // Profile Register
