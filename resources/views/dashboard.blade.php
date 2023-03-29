@@ -25,7 +25,7 @@
                                         {{-- img --}}
                                         <img class="img-fluid rounded-circle p-2"
                                             @if (!str_starts_with(Auth::user()->profile->picture, 'http')) 
-                                                src="{{asset('storage/' . Auth::user()->profile->picture)}}"
+                                                src="{{asset('storage' . Auth::user()->profile->picture)}}"
                                             @else 
                                                 src="{{ Auth::user()->profile->picture }}"
                                             @endif
@@ -47,16 +47,22 @@
                                                 'button' => (Auth::user()->isActive == 0) ? 'Set to Available' : 'Set to Unavailable',
                                                 'method' => 'put',
                                                 'routeName' => 'profile.update',
+                                                'className' => ''
                                             ])
                                             {{-- end form --}}
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="p-2">
+                                            @if (isset(Auth::user()->profile->bio))
                                             <div class="mb-2 fs-5">Bio</div>
                                             <p class="card text-dark p-2">{{Auth::user()->profile->bio}}</p>
+                                            @endif
+
+                                            @if (isset(Auth::user()->profile->services))
                                             <div class="mb-2 fs-5">Services</div>
-                                            <p class="card text-dark m-0 p-2">{{Auth::user()->profile->bio}}</p>
+                                            <p class="card text-dark m-0 p-2">{{Auth::user()->profile->services}}</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -65,20 +71,20 @@
                         {{-- feedback and stats --}}
                         <div class="col-12 col-lg-8">
                             <div class="row g-3">
-                                <div class="col-12 col-md-4">
-                                    <a href="{{route('messages.index')}}" class="btn doc-btn me-auto text-decoration-none text-white">
+                                @if (count($messages) != 0)
+                                <div class="col-6">
+                                    <a href="{{route('messages.index')}}" class="btn doc-btn me-auto text-decoration-none text-white w-100">
                                         <label for="" class="title">You have {{count($messages)}} messages</label>
                                     </a>
                                 </div>
-                                <div class="col-12 col-md-8">
-                                    
-                                        <a href="{{route('reviews.index')}}" class="btn doc-btn me-auto text-decoration-none text-white">
-                                            <label class="title">You have {{count($reviews)}} reviews</label>
-                                        </a>
-                                            
-                                        
-                                    
+                                @endif
+                                @if (count($reviews) != 0)
+                                <div class="col-6">
+                                    <a href="{{route('reviews.index')}}" class="btn doc-btn me-auto text-decoration-none text-white w-100">
+                                        <label class="title">You have {{count($reviews)}} reviews</label>
+                                    </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
