@@ -52,10 +52,10 @@
         </div>
     </div>
 
-    {{-- @if ($routeName === 'register') --}}
-        {{-- pw --}}
-        <hr>
-        <div class="mb-4 row">
+    {{-- pw --}}
+    @if ($routeName === 'register')
+    <hr>
+        {{-- <div class="mb-4 row">
             <label for="current_password" class="col-md-4 col-form-label text-md-right title">{{__('Current Password*')}}</label>
             
             <div class="col-md-6">
@@ -68,7 +68,7 @@
                     </span>
                 @enderror
             </div>
-        </div>
+        </div> --}}
 
         <div class="mb-4 row">
             <label for="password" class="col-md-4 col-form-label text-md-right title">{{ __('Password*') }}</label>
@@ -95,8 +95,13 @@
             </div>
         </div>
         <hr>
-        {{-- end pw --}}
-    {{-- @endif --}}
+    @else
+    <input type="hidden" id="password" value="0">
+    <input type="hidden" id="password-confirm" value="0">
+    @endif
+
+    {{-- end pw --}}
+        
 
 
     <div class="mb-4 row">
@@ -135,7 +140,7 @@
                         <input class="checkbox__trigger visuallyhidden"  type="checkbox"
                             id="{{ $specialization->name }}" name="specializations[]"
                             value="{{ $specialization->id }}" autofocus
-                            @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
+                            @if ($errors->all()) @checked(in_array($specialization->id, old('specialization',[])))
                             {{-- checked true = $user->profile->specializations != null --}}
                             @else @checked(isset($user->profile->specializations) ? $user->profile->specializations->contains($specialization->id) : false) @endif>
 

@@ -49,14 +49,15 @@ class ProfileController extends Controller
         }
         else{
             // password validation only if exist this user
-            $validated = $request->validateWithBag('updatePassword', [
-                'current_password' => ['required', 'current_password'],
-                'password' => ['required', Password::defaults(), 'confirmed'],
-            ]);
-            //password save
-            $request->user()->update([
-                'password' => Hash::make($validated['password']),
-            ]);
+            // $validated = $request->validate(
+            // [
+            //     'current_password' => ['required', 'current_password'],
+            //     'password' => ['required', Password::defaults(), 'confirmed'],
+            // ]);
+            // //password save
+            // $request->user()->update([
+            //     'password' => Hash::make($validated['password']),
+            // ]);
             //end pw
 
             return Redirect::route('profile.edit')->with('status', 'profile-updated');
