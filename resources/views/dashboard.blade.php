@@ -66,8 +66,8 @@
                         <div class="col-12 col-lg-8">
                             <div class="row g-3">
                                 <div class="col-12 col-md-4">
-                                    <a href="#" class="btn doc-btn me-auto text-decoration-none text-white">
-                                        <label for="" class="title">You've got {{count($messages)}} messages to read</label>
+                                    <a href="{{route('messages.index')}}" class="btn doc-btn me-auto text-decoration-none text-white">
+                                        <label for="" class="title">You've got {{count($messages)}} messages</label>
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-8">
