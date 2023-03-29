@@ -11,6 +11,7 @@
                             'title' => 'Register',
                             'method' => 'post',
                             'routeName' => 'register',
+                            'className' => 'hasPassword hasCheckbox'
                         ])
                     </div>
                 </div>

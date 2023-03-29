@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route($routeName) }}" id="form">
+<form method="POST" action="{{ route($routeName) }}" id="form" class="{{$className}}">
     @csrf
     @method($method)
 
@@ -91,7 +91,8 @@
                 @if ($routeName === 'register') value="{{ old('address') }}" 
                 @else
                 value="{{ old('address', $user->profile->address) }}" @endif
-                autocomplete="address" autofocus>
+                autocomplete="address" autofocus
+                required>
 
             @error('address')
                 <span class="invalid-feedback" role="alert">
