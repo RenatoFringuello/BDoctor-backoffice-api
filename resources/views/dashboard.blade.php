@@ -70,22 +70,40 @@
                                         <label class="title mb-2">Messages</label>
                                         <a href="#" class="text-black text-decoration-none">
                                             <ul class="list-group">
-                                                @foreach ($messages->take(5) as $message)
-                                                    <li class="list-group-item py-1">
-                                                        <div class="row text-decoration-none">
-                                                            <div class="col-10">
-                                                                <div>{{ $message->name }}</div>
-                                                                <pre class="fs-small text-wrap text-secondary">{{ $message->email }}</pre>
-                                                            </div>
-                                                            <div class="col-2 d-flex">
-                                                                <div class="availability-dot rounded-circle bg-primary m-auto"></div>
-                                                            </div>
+                                                @foreach ($messages->take(5) as $key => $message)
+                                                <li class="list-group-item py-1 {{($key != $messageSelected)? 'd-none' : '' }}">
+                                                    <div class="row text-decoration-none">
+                                                        <div class="col-10">
+                                                            <div>{{ $message->name }}</div>
+                                                            <pre class="fs-small text-wrap text-secondary">{{ $message->email }}</pre>
                                                         </div>
-                                                    </li>
+                                                        <div class="col-2 d-flex">
+                                                            <div class="availability-dot rounded-circle bg-primary m-auto"></div>
+                                                        </div>
+                                                        <p>{{$message->content}}</p>
+                                                    </div>
+                                                </li>
                                                 @endforeach
                                             </ul>
                                         </a>
                                     </div>
+                                    <ul class="list-group">
+                                        @foreach ($messages->take(5) as $key => $message)
+                                        <li class="list-group-item py-1">
+                                            <a href="{{route('dashboard', ['key'=>$key])}}" class="text-black text-decoration-none">
+                                                <div class="row text-decoration-none">
+                                                    <div class="col-10">
+                                                        <div>{{ $message->name }}</div>
+                                                        <pre class="fs-small text-wrap text-secondary">{{ $message->email }}</pre>
+                                                    </div>
+                                                    <div class="col-2 d-flex">
+                                                        <div class="availability-dot rounded-circle bg-primary m-auto"></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                                 <div class="col-12 col-md-8">
                                     <div class="custom-card cyan">
