@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -10,26 +11,31 @@ class ApiDoctorsController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->specializations) {
-            //salvano la richiesta di un eventuale order by 
-            $sortByAvg = ($request->sortByAvg) ? 'reviews_avg_rating' : 'id';
-            $sortByCount = ($request->sortByCount) ? 'reviews_count' : 'id';
-
-            //filtra i risultati per specializzazione(sempre); 
-            //l'order by $sortByAvg e $sortByCount (se non esistono le fa per user.id)
+        // dd((Specialization::where('name', '=', $request->specializations)->get()->toArray())?true:false);
+        if ($request->specializations && Specialization::where('name', '=', $request->specializations)->get()->toArray()) {
+            //filtra i risultati per specializzazione(sempre) AND se la specializzazione richiesta esiste; 
             $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
                 ->withAvg('reviews', 'rating')
                 ->withCount('reviews')
                 ->whereHas('profile.specializations', function ($query) use ($request) {
                     $query->where('name', $request->specializations);
-                })
-                ->orderBy($sortByAvg, 'DESC')
-                ->orderBy($sortByCount, 'DESC')
-                ->paginate(10);
+                });
+
+            if($request->sortByAvg){
+                //se viene richiesto un sort per avg
+                $user_query->orderBy('reviews_avg_rating', 'DESC');
+            }
+            if($request->sortByCount){
+                //se viene richiesto un sort per count
+                $user_query->orderBy('reviews_count', 'DESC');
+            }
+            
+            $user_query->get();
+            $user = $user_query->paginate(10);
 
             return response()->json([
                 'success' => true,
-                'results' => $user_query
+                'results' => $user
             ]);
         } else {
             //se la ricerca non viene fatta per specializzazione allora return false
