@@ -52,8 +52,24 @@
         </div>
     </div>
 
-    @if ($routeName === 'register')
+    {{-- @if ($routeName === 'register') --}}
         {{-- pw --}}
+        <hr>
+        <div class="mb-4 row">
+            <label for="current_password" class="col-md-4 col-form-label text-md-right title">{{__('Current Password*')}}</label>
+            
+            <div class="col-md-6">
+                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror"
+                    name="current_password" autocomplete="current-password" required minlength="8">
+
+                @error('current_password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
         <div class="mb-4 row">
             <label for="password" class="col-md-4 col-form-label text-md-right title">{{ __('Password*') }}</label>
 
@@ -78,8 +94,9 @@
                     autocomplete="new-password" required minlength="8">
             </div>
         </div>
+        <hr>
         {{-- end pw --}}
-    @endif
+    {{-- @endif --}}
 
 
     <div class="mb-4 row">
