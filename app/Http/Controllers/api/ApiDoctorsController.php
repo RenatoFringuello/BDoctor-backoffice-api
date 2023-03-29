@@ -11,7 +11,6 @@ class ApiDoctorsController extends Controller
 {
     public function index(Request $request)
     {
-        // dd((Specialization::where('name', '=', $request->specializations)->get()->toArray())?true:false);
         if ($request->specializations && Specialization::where('name', '=', $request->specializations)->get()->toArray()) {
             //filtra i risultati per specializzazione(sempre) AND se la specializzazione richiesta esiste; 
             $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
@@ -30,7 +29,9 @@ class ApiDoctorsController extends Controller
                 $user_query->orderBy('reviews_count', 'DESC');
             }
             
+            //get the results
             $user_query->get();
+            //then create the pagination
             $user = $user_query->paginate(10);
 
             return response()->json([
