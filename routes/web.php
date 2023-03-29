@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
+use App\Http\Controllers\BraintreeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -32,5 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('profile/update', [AuthProfileController::class, 'update'])
         ->name('profile.register.update');
 });
+
+// Route for payment
+Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
 require __DIR__ . '/auth.php';
