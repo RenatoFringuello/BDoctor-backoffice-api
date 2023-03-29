@@ -67,19 +67,17 @@
                             <div class="row g-3">
                                 <div class="col-12 col-md-4">
                                     <a href="{{route('messages.index')}}" class="btn doc-btn me-auto text-decoration-none text-white">
-                                        <label for="" class="title">You've got {{count($messages)}} messages</label>
+                                        <label for="" class="title">You have {{count($messages)}} messages</label>
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-8">
-                                    <div class="custom-card cyan">
-                                        <label class="title mb-2">Reviews</label>
-                                        <ul class="list-group">
-                                            <li class="list-group-item">item</li>
-                                            <li class="list-group-item">item</li>
-                                            <li class="list-group-item">item</li>
-                                            <li class="list-group-item">item</li>
-                                        </ul>
-                                    </div>
+                                    
+                                        <a href="{{route('reviews.index')}}" class="btn doc-btn me-auto text-decoration-none text-white">
+                                            <label class="title">You have {{count($reviews)}} reviews</label>
+                                        </a>
+                                            
+                                        
+                                    
                                 </div>
                             </div>
                         </div>

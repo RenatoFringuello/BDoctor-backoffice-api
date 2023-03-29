@@ -27,7 +27,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/dashboard', function () {
         $messages = Auth::user()->messages;
-        return view('dashboard', compact('messages'));
+        $reviews = Auth::user()->reviews;
+        return view('dashboard', compact('messages', 'reviews'));
     })->name('dashboard');
 
     // Profile Register

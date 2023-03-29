@@ -38,6 +38,7 @@
                             <div class="col-10">
                                 <div>{{ $review->name }}</div>
                                 <pre class="fs-small text-wrap text-secondary">{{ $review->email }}</pre>
+                                <div>{{$review->rating}}</div>
                             </div>
                             <div class="col-2 d-flex">
                                 <div class="availability-dot rounded-circle bg-primary m-auto"></div>
