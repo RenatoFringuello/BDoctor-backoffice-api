@@ -96,6 +96,7 @@
         </div>
         <hr>
     @else
+    {{-- for the password and checkbox frontend validation --}}
     <input type="hidden" id="password" value="0">
     <input type="hidden" id="password-confirm" value="0">
     @endif
