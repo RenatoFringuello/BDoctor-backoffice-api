@@ -14,14 +14,7 @@
                                     <div>{{ $review->name }}</div>
                                     <pre class="fs-small text-wrap text-secondary m-0">{{ $review->email }}</pre>
                                 </div>
-                                <div class="d-flex">
-                                    <form action="{{route('reviews.destroy', $review->id)}}" method="post" class="d-flex form-deleter">
-                                        @csrf
-                                        @method('DELETE')
-                                        
-                                        <button type="submit" class="btn btn-danger m-auto"> Delete </button>
-                                    </form>
-                                </div>
+                               
                             </div>
                         </a>
                     </li>
