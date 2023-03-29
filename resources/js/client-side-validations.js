@@ -11,34 +11,3 @@ myForm.addEventListener("submit", (event) => {
         }
     }
 });
-
-// const myForm = document.getElementById('form');
-
-// myForm.addEventListener("submit", (event) => {
-//     if(myForm.classList.contains('hasPassword') || myForm.classList.contains('hasCheckbox')){
-//         event.preventDefault();
-
-//         if(myForm.classList.contains('hasPassword')){
-//             //password check
-//             let pass = document.getElementById('password').value;
-//             let passConfirm = document.getElementById('password-confirm').value;
-
-//             if (pass == passConfirm) {
-//                 console.log('pw 3');
-//                 myForm.submit();
-//             }
-//         }
-
-//         if(myForm.classList.contains('hasCheckbox')){
-//             // checkboxes validation
-//             let checkboxes = document.querySelectorAll('input[type=checkbox].checkbox__trigger:checked');
-
-//             console.log(checkboxes);
-            
-//             if (checkboxes.length >= 1) {
-//                 console.log('done 3');
-//                 myForm.submit();
-//             }
-//         }
-//     }
-// });
