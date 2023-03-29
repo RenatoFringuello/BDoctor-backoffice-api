@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route($routeName) }}">
+<form method="POST" action="{{ route($routeName) }}" id="form">
     @csrf
     @method($method)
 
@@ -114,7 +114,7 @@
                 <div class="checkbox-wrapper-33">
                     <label class="checkbox" for="{{ $specialization->name }}">
                         {{-- Input --}}
-                        <input class="checkbox__trigger visuallyhidden" required:valid   type="checkbox"
+                        <input class="checkbox__trigger visuallyhidden"  type="checkbox"
                             id="{{ $specialization->name }}" name="specializations[]"
                             value="{{ $specialization->id }}" autofocus
                             @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
@@ -137,7 +137,7 @@
     {{-- Button Send --}}
     <div class="mb-4 row mb-0">
         <div class="text-end me-5">
-            <button type="submit" class="btn doc-btn">
+            <button type="submit" class="btn doc-btn" id="send">
                 {{ __('Send') }}
             </button>
         </div>
