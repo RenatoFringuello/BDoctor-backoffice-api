@@ -4,7 +4,7 @@
  <div class="container mt-4 pt-3 bg-white border rounded-4">
     <div class="row">
         <h1 class="text-center font-weight-bold mb-5">Choose your Sponsorization Plan</h1>      
-        <div class="col-lg-12 d-lg-flex d-md-block justify-content-between">   
+        <div class="col-lg-12 d-lg-flex flex-lg-row flex-md-column justify-content-between">   
                 @foreach ($sponsors as $sponsor)             
                     @if($sponsor->id != 1)
                     <div class="col-lg-3 col-md-10 col-sm-9 text-center custom-card blue sponsor-card">
@@ -20,18 +20,20 @@
                             <span class="text-capitalize fs-4 ">duration:  {{$sponsor->duration}} hours</span> 
                            
                         </div>
-                        <button  class="btn btn-primary doc-btn my-3 text-md-center">
+                        <button  class="btn btn-primary doc-btn my-3">
                             <a href="Acquista" class="text-white text-decoration-none">Acquista</a>
                         </button>
                     </div>
                     @endif
                 
-                @endforeach
-             
+                @endforeach   
         </div>
+            
+        <div class="col-2 ">
+            <button  class="btn btn-primary doc-btn my-4">
+                <a href="{{route('dashboard')}}" class="text-white text-decoration-none">Dashboard</a>
+            </button>   
+        </div> 
     </div>
-    <button  class="btn btn-primary doc-btn my-4 ">
-        <a href="{{route('dashboard')}}" class="text-white text-decoration-none">Dashboard</a>
-    </button>        
 </div>
 @endsection
