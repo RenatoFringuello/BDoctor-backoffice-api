@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/doctors', [ApiDoctorsController::class, 'index'])->name('api.doctors.index');
+Route::get('/sponsored', [ApiDoctorsController::class, 'sponsored'])->name('api.doctors.sponsored');
+
 Route::get('/specializations', [ApiSpecializationsController::class, 'index'])->name('api.specializations.index');
 Route::get('/doctors/{user}', [ApiDoctorsController::class, 'show'])->name('api.doctors.show');
 
