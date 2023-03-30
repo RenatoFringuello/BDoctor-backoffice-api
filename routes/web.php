@@ -36,6 +36,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Route for payment
 Route::get('/payment', [BraintreeController::class, 'token'])->name('payment');
-Route::get('/payment/process', 'PaymentsController@process')->name('payment.process');
+Route::post('/payment/process', [BraintreeController::class, 'process'])->name('payment.process');
 
 require __DIR__ . '/auth.php';
