@@ -20,15 +20,15 @@ class ApiDoctorsController extends Controller
                     $query->where('name', $request->specializations);
                 });
 
-            if($request->sortByAvg){
+            if ($request->sortByAvg) {
                 //se viene richiesto un sort per avg
                 $user_query->orderBy('reviews_avg_rating', 'DESC');
             }
-            if($request->sortByCount){
+            if ($request->sortByCount) {
                 //se viene richiesto un sort per count
                 $user_query->orderBy('reviews_count', 'DESC');
             }
-            
+
             //get the results
             $user_query->get();
             //then create the pagination
@@ -57,6 +57,24 @@ class ApiDoctorsController extends Controller
         return response()->json([
             'success' => true,
             'results' => $user,
+        ]);
+    }
+
+    public function sponsored(Request $request)
+    {
+        $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+            ->withAvg('reviews', 'rating')
+            ->withCount('reviews')
+            ->whereHas('sponsors', function ($query) use ($request) {
+                $query->where('id', '<>', '1');
+            })
+            ->get();
+
+
+        //se la ricerca non viene fatta per specializzazione allora return false
+        return response()->json([
+            'success' => true,
+            'results' => $user_query
         ]);
     }
 }
