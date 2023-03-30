@@ -28,14 +28,10 @@
 
         <div class="card p-4 mb-4 bg-white shadow rounded-lg">
 
-<<<<<<< HEAD
             @include('partials.sponsor-form', [
                 'title' => 'Become a premium',
                 'sponsors' => $sponsors,
             ])
-=======
-            @include('profile.partials.update-password-form')
->>>>>>> develop
 
         </div>
 
