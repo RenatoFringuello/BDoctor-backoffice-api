@@ -14,18 +14,23 @@ textarea:focus {
     outline: none !important;
 }
 
+.sponsor-type {
+    background-color: $light-doc-color;
+}
+
 /* buttons */
 .doc-btn {
     color: white !important;
     padding: .4rem 1.3rem !important;
     background-color: $light-doc-color !important;
     border: 1px solid $light-doc-color !important;
-    
-    &.bg-available{
+
+    &.bg-available {
         background-color: $av-light-available !important;
         border-color: $av-light-available !important;
     }
-    &.bg-unavailable{
+
+    &.bg-unavailable {
         background-color: $av-light-unavailable !important;
         border-color: $av-light-unavailable !important;
     }
@@ -33,12 +38,13 @@ textarea:focus {
     &:hover {
         background-color: $main-doc-color !important;
         border-color: $main-doc-color !important;
-        
-        &.bg-available{
+
+        &.bg-available {
             background-color: $av-available !important;
             border-color: $av-available !important;
         }
-        &.bg-unavailable{
+
+        &.bg-unavailable {
             background-color: $av-unavailable !important;
             border-color: $av-unavailable !important;
         }
@@ -46,24 +52,26 @@ textarea:focus {
 }
 
 // cards border
-.custom-card{
+.custom-card {
     border-radius: .7rem;
     padding: .5rem;
     color: white;
-    &.blue{
-        background:$light-pro-color;
+
+    &.blue {
+        background: $light-pro-color;
     }
-    &.cyan{
-        background:$light-doc-color;
+
+    &.cyan {
+        background: $light-doc-color;
     }
 }
 
 //availability-dot
-.availability-dot{
+.availability-dot {
     display: inline-block;
-    width:  12px;
+    width: 12px;
     height: 12px;
-    cursor:help;
+    cursor: help;
 }
 
 /* checkboxes */
@@ -86,17 +94,18 @@ textarea:focus {
         position: absolute;
         width: 1px;
     }
-    
+
     .checkbox {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         width: fit-content;
         cursor: pointer;
-        
-        + .checkbox {
+
+        +.checkbox {
             margin-top: var(--s-small);
         }
+
         .icon-checkbox {
             width: 1em;
             height: 1em;
@@ -117,7 +126,7 @@ textarea:focus {
             }
         }
     }
-    
+
     .checkbox__symbol {
         display: inline-block;
         display: flex;
@@ -149,8 +158,8 @@ textarea:focus {
         margin: 0;
     }
 
-    .checkbox__trigger{
-        &:checked + .checkbox__symbol{
+    .checkbox__trigger {
+        &:checked+.checkbox__symbol {
             &:after {
                 -webkit-animation: ripple-33 1.5s var(--e-out);
                 animation: ripple-33 1.5s var(--e-out);
@@ -161,7 +170,8 @@ textarea:focus {
                 stroke-dashoffset: 0px;
             }
         }
-        &:focus + .checkbox__symbol {
+
+        &:focus+.checkbox__symbol {
             box-shadow: 0 0 0 0.25em $main-doc-color-33opacity;
         }
     }
