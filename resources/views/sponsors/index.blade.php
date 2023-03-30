@@ -3,11 +3,11 @@
   
  <div class="container mt-4 pt-3 bg-white border rounded-4">
     <div class="row">
-        <h1 class="text-center mb-5">Choose your Sponsorization Plan</h1>      
-        <div class="col-12 d-flex justify-content-between">   
+        <h1 class="text-center font-weight-bold mb-5">Choose your Sponsorization Plan</h1>      
+        <div class="col-lg-12 col-md-6 d-lg-flex d-md-block justify-content-between">   
                 @foreach ($sponsors as $sponsor)             
                     @if($sponsor->id != 1)
-                    <div class="col-3 text-center custom-card blue">
+                    <div class="col-lg-3 col-md-8  text-center custom-card blue">
                         <div class="sponsor-type rounded-4 p-1 mb-4 font-weight-bold">
                             <h2 class="text-capitalize rounded-4">{{ $sponsor->type }}</h2>
                         </div>
