@@ -77,16 +77,16 @@ class SpecializationTableSeeder extends Seeder
                 "name" => "occupational medicine"
             ],
             [
-                "name" => " endocrinology and metabolic diseases"
+                "name" => "endocrinology and metabolic diseases"
             ],
             [
-                "name" => " psychiatrist"
+                "name" => "psychiatrist"
             ],
             [
-                "name" => "  rheumatology"
+                "name" => "rheumatology"
             ],
             [
-                "name" => "  traumatology"
+                "name" => "traumatology"
             ],
         ];
 

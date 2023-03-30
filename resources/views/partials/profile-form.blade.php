@@ -4,6 +4,8 @@
 
     <h3 class="mt-2 mb-5 fw-bold text-uppercase text-center">{{ $title }}</h3>
 
+    <input type="hidden" name="isRegistered" value="{{$isRegistered}}">
+
     {{-- Picture --}}
     <div class="mb-4 row">
         <label for="picture" class="col-md-4 col-form-label text-md-right title">{{ __('Add Picture') }}</label>

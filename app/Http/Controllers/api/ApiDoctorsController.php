@@ -3,37 +3,48 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Specialization;
-// use App\Models\Profile;
-// use App\Models\Sponsor;
 
 class ApiDoctorsController extends Controller
 {
-    //
-
     public function index(Request $request)
     {
-        //restituisce tutti i dottori
-        $user_query = User::with(['profile', 'profile.specializations', 'sponsors']);
-        if ($request->specializations) {
+        if ($request->specializations && Specialization::where('name', '=', $request->specializations)->get()->toArray()) {
+            //filtra i risultati per specializzazione(sempre) AND se la specializzazione richiesta esiste; 
+            $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+                ->withAvg('reviews', 'rating')
+                ->withCount('reviews')
+                ->whereHas('profile.specializations', function ($query) use ($request) {
+                    $query->where('name', $request->specializations);
+                });
 
-            //filtra i risultati per specializzazione
-            $user_query->whereHas('profile.specializations', function ($query) use ($request) {
-                $query->where('name', $request->specializations);
-            });
+            if($request->sortByAvg){
+                //se viene richiesto un sort per avg
+                $user_query->orderBy('reviews_avg_rating', 'DESC');
+            }
+            if($request->sortByCount){
+                //se viene richiesto un sort per count
+                $user_query->orderBy('reviews_count', 'DESC');
+            }
+            
+            //get the results
+            $user_query->get();
+            //then create the pagination
+            $user = $user_query->paginate(10);
+
+            return response()->json([
+                'success' => true,
+                'results' => $user
+            ]);
+        } else {
+            //se la ricerca non viene fatta per specializzazione allora return false
+            return response()->json([
+                'success' => false,
+                'results' => null
+            ]);
         }
-        if ($request->sponsors) {
-            $user_query->whereHas('sponsors', function ($query) use ($request) {
-                $query->where('type', $request->sponsors);
-            });
-        }
-        $users = $user_query->paginate(10);
-        return response()->json([
-            'success' => true,
-            'results' => $users
-        ]);
     }
 
     public function show(User $user)
@@ -49,14 +60,3 @@ class ApiDoctorsController extends Controller
         ]);
     }
 }
-
-
-// $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
-// ->withAvg('reviews', 'rating')
-// ->withCount('reviews')
-// ->whereHas('profile.specializations', function ($query) use ($request) {
-//     $query->where('name', $request->specializations);
-// })
-// ->orderBy($sortByAvg, 'DESC')
-// ->orderBy($sortByCount, 'DESC')
-// ->paginate(10);

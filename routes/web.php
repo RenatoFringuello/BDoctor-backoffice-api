@@ -1,9 +1,16 @@
 <?php
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\BraintreeController;
+=======
+use App\Http\Controllers\MessagesController;
+>>>>>>> develop
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +30,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $messages = Auth::user()->messages;
+        $reviews = Auth::user()->reviews;
+        return view('dashboard', compact('messages', 'reviews'));
     })->name('dashboard');
 
     // Profile Register
@@ -32,10 +41,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::put('profile/update', [AuthProfileController::class, 'update'])
         ->name('profile.register.update');
+    //Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+    Route::resource('/messages', MessagesController::class);
+    Route::resource('/reviews', ReviewsController::class);
 });
 
+<<<<<<< HEAD
 // Route for payment
 Route::get('/payment', [BraintreeController::class, 'token'])->name('payment');
 Route::post('/payment/process', [BraintreeController::class, 'process'])->name('payment.process');
 
+=======
+>>>>>>> develop
 require __DIR__ . '/auth.php';

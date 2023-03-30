@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\Specialization;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -59,17 +60,24 @@ class ProfileController extends Controller
 
         $profile = Auth::user()->profile;
 
-        // dd($request->route()->getName());
+        // dd($request);
         //DELETE old pic
         if (!str_starts_with($profile->picture, 'http') && $request->route()->getName() != 'profile.register.update') {
             Storage::delete('/placeholder/imgs', $profile->picture);
         }
 
-        //and then add new
+        //and then add new picture
         $data['picture'] = (!isset($data['picture'])) ? '/placeholder/imgs/place.jpg' : Storage::put('/placeholder/imgs', $data['picture']);
         $data['curriculum'] = (!isset($data['curriculum'])) ? 'null' : Storage::put('/placeholder/cv', $data['curriculum']);
         $profile->update($data);
 
-        return view('dashboard', compact('profile'));
+        if($request->isRegistered){
+            $messages = Auth::user()->messages;
+            $reviews = Auth::user()->reviews;
+            return view('dashboard', compact('profile', 'messages', 'reviews'));
+        }
+        else{
+            return view('profile.edit', ['user' => Auth::user(), 'specializations' => Specialization::all()]);
+        }
     }
 }
