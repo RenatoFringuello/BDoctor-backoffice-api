@@ -96,7 +96,5 @@
                 </div>
             </div>
         </div>
-
-        <a href="{{ route('payment') }}" class="btn">A</a>
     </div>
 @endsection
