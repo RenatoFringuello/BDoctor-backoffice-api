@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        @include('braintree')
+        @include('braintree', compact('sponsor'))
     </div>
     </div>
 @endsection
