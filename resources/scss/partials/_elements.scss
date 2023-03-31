@@ -55,6 +55,16 @@ textarea:focus {
     }
 }
 
+.btn-sponsor {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: orangered;
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    padding: 0.9rem 13.75rem;
+}
+
 // cards border
 .custom-card {
     border-radius: .7rem;
