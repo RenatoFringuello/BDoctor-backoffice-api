@@ -6,24 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 class ApiDoctorsController extends Controller
 {
     public function index(Request $request)
     {
         if ($request->specializations && Specialization::where('name', '=', $request->specializations)->get()->toArray()) {
-            //filtra i risultati per specializzazione(sempre) AND se la specializzazione richiesta esiste; 
-            // $users_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
-            //     ->withAvg('reviews', 'rating')
-            //     ->withCount('reviews')
-            //     ->join('sponsor_user', 'sponsor_user.user_id', '=', 'users.id')
-            //     ->join('sponsors', 'sponsors.id', '=', 'sponsor_user.sponsor_id')
-            //     ->whereHas('profile.specializations', function ($query) use ($request) {
-            //         $query->where('name', $request->specializations);
-            //     })->orderBy('sponsors.id', 'DESC');
-
+            /**
+             * user_query_featured prende tutti i dottori con lo sponsor
+             */
             $users_query_featured = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
                 ->withAvg('reviews', 'rating')
                 ->withCount('reviews')
@@ -33,6 +24,9 @@ class ApiDoctorsController extends Controller
                 ->whereHas('sponsors', function ($query) use ($request) {
                     $query->where('id', '<>', '1');
                 });
+            /**
+             * user_query_not_featured prende tutti i dottori senza Sponsor
+             */
             $users_query_not_featured = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
                 ->withAvg('reviews', 'rating')
                 ->withCount('reviews')
@@ -42,29 +36,24 @@ class ApiDoctorsController extends Controller
                 ->whereHas('sponsors', function ($query) use ($request) {
                     $query->where('id', '=', '1');
                 });
-
+            
+            //con queste condizioni vengono fatti gli orderBy average and count
             if ($request->sortByAvg) {
                 //se viene richiesto un sort per avg
-                // $users_query->orderBy('reviews_avg_rating', 'DESC');
-
                 $users_query_featured->orderBy('reviews_avg_rating', 'DESC');
                 $users_query_not_featured->orderBy('reviews_avg_rating', 'DESC');
             }
             if ($request->sortByCount) {
                 //se viene richiesto un sort per count
-                // $users_query->orderBy('reviews_count', 'DESC');
-
                 $users_query_featured->orderBy('reviews_count', 'DESC');
                 $users_query_not_featured->orderBy('reviews_count', 'DESC');
             }
 
-            //then create the pagination
-            // $users_query->get();
-            // $users = $users_query->paginate(10);
-
+            //merge the queries ordered in a single collection
             $users = $users_query_featured->get()->merge($users_query_not_featured->get());
-            // $users = (new Collection($users_query_featured->get()->merge($users_query_not_featured->get())))->paginate(10);
-
+            //then create the pagination
+            $users = $this->paginate($users, 8);
+            
             return response()->json([
                 'success' => true,
                 'results' => $users,
