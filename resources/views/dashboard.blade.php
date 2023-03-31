@@ -73,9 +73,8 @@
                         {{-- feedback and stats --}}
                         <div class="col-12 col-lg-8">
                             <div class="row g-3">
-                                <div class="col-12 text-center mb-3">
-                                    <a href="{{route('sponsors.index')}}" class="btn-sponsor">Choose your Premium account</a>
-                                    
+                                <div class="col-12 text-center my-3">
+                                    <a href="{{route('sponsors.index')}}" class="btn-sponsor">Choose your Premium account</a>                                    
                                 </div>
                                 @if (count($messages) != 0)
                                 <div class="col-6">
