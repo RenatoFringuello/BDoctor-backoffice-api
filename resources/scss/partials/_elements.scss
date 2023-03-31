@@ -2,7 +2,8 @@
 
 // price
 .price{
-    color: $main-doc-color;
+    color: inherit;
+    opacity: .8;
     .price-box{
         display: inline-block;
         position: relative;
