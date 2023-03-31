@@ -46,7 +46,11 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{-- User Pictures --}}
-                                <img src="{{ Auth::user()->profile->picture }}" alt="User Icon" class="user-icon">
+                                <img class="user-icon"
+                                    @if (!str_starts_with(Auth::user()->profile->picture, 'http')) src="{{ asset('storage/' . Auth::user()->profile->picture) }}"
+                                    @else                     
+                                    src="{{ Auth::user()->profile->picture }}" @endif
+                                    alt="{{ Auth::user()->name . '\'s picture imgs' }}">
                                 {{ Auth::user()->name }}
                             </a>
 
@@ -95,6 +99,7 @@
                                     @csrf
                                 </form>
                             </div>
+
                         </li>
                     @endguest
                 </ul>
