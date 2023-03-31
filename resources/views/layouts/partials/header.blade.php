@@ -6,6 +6,8 @@
                 <a class="navbar-brand" href="http://localhost:5173/">
                     <img src="{{ asset('assets/B-Doc-Logo.png') }}" alt="Main Logo" class="w-25">
                 </a>
+                <a href="{{ env('LINK_APP_FRONTEND') }}"
+                    class="nav-item text-decoration-none text-dark d-none d-md-inline">Home</a>
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -37,17 +39,55 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
+                            <a href="{{ env('LINK_APP_FRONTEND') }}"
+                                class="nav-link text-decoration-none text-dark d-inline d-md-none">Home</a>
+                        <li>
+                        <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{-- User Pictures --}}
+                                <img src="{{ Auth::user()->profile->picture }}" alt="User Icon" class="user-icon">
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-                                <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+
+                                <a class="dropdown-item" href="{{ url('dashboard') }}">
+                                    <span>
+                                        <i class="fa-solid fa-house"></i>
+                                    </span>
+                                    {{ __('Dashboard') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ url('profile') }}">
+                                    <span>
+                                        <i class="fa-solid fa-user"></i>
+                                    </span>
+                                    {{ __('Profile') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('messages.index') }}">
+                                    <span>
+                                        <i class="fa-solid fa-comment"></i>
+                                    </span>
+                                    {{ __('Message') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('reviews.index') }}">
+                                    <span>
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                    {{ __('Review') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('sponsors.index') }}">
+                                    <span>
+                                        <i class="fa-solid fa-certificate text-warning"></i>
+                                    </span>
+                                    {{ __('Sponsors') }}
+                                </a>
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
+                                    <span>
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                    </span>
                                     {{ __('Logout') }}
                                 </a>
 

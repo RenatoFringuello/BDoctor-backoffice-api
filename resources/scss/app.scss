@@ -16,3 +16,10 @@ label.title {
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $main-doc-color;
+    border-radius: 50%;
+}

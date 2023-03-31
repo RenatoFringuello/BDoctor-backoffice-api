@@ -32,7 +32,7 @@ class ApiDoctorsController extends Controller
             //get the results
             $user_query->get();
             //then create the pagination
-            $user = $user_query->paginate(10);
+            $user = $user_query->paginate(8);
 
             return response()->json([
                 'success' => true,
