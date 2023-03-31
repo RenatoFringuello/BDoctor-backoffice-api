@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col pt-4">
-                <div class="card rounded-4">
-                    <div class="card-body">
-                        <h2>Dashboard</h2>
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col pt-4">
+            <div class="card rounded-4">
+                <div class="card-body">
+                    <h2>Dashboard</h2>
+                   
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
 
                         <div class="mb-3">
                             {{ __('Welcome back ' . Auth::user()->name) }}
@@ -61,37 +62,32 @@
                                                     <p class="card text-dark p-2">{{ Auth::user()->profile->bio }}</p>
                                                 @endif
 
-                                                @if (isset(Auth::user()->profile->services))
-                                                    <div class="mb-2 fs-5">Services</div>
-                                                    <p class="card text-dark m-0 p-2">{{ Auth::user()->profile->services }}
-                                                    </p>
-                                                @endif
-                                            </div>
+                                            @if (isset(Auth::user()->profile->services))
+                                            <div class="mb-2 fs-5">Services</div>
+                                            <p class="card text-dark m-0 p-2">{{Auth::user()->profile->services}}</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- feedback and stats --}}
-                            <div class="col-12 col-lg-8">
-                                <div class="row g-3">
-                                    @if (count($messages) != 0)
-                                        <div class="col-6">
-                                            <a href="{{ route('messages.index') }}"
-                                                class="btn doc-btn me-auto text-decoration-none text-white w-100">
-                                                <label for="" class="title">You have {{ count($messages) }}
-                                                    messages</label>
-                                            </a>
-                                        </div>
-                                    @endif
-                                    @if (count($reviews) != 0)
-                                        <div class="col-6">
-                                            <a href="{{ route('reviews.index') }}"
-                                                class="btn doc-btn me-auto text-decoration-none text-white w-100">
-                                                <label class="title">You have {{ count($reviews) }} reviews</label>
-                                            </a>
-                                        </div>
-                                    @endif
+                        </div>
+                        {{-- feedback and stats --}}
+                        <div class="col-12 col-lg-8">
+                            <div class="row g-3">
+                                @if (count($messages) != 0)
+                                <div class="col-6">
+                                    <a href="{{route('messages.index')}}" class="btn doc-btn me-auto text-decoration-none text-white w-100">
+                                        <label for="" class="title">You have {{count($messages)}} messages</label>
+                                    </a>
                                 </div>
+                                @endif
+                                @if (count($reviews) != 0)
+                                <div class="col-6">
+                                    <a href="{{route('reviews.index')}}" class="btn doc-btn me-auto text-decoration-none text-white w-100">
+                                        <label class="title">You have {{count($reviews)}} reviews</label>
+                                    </a>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -99,4 +95,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
