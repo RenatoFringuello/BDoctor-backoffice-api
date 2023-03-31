@@ -23,3 +23,7 @@ label.title {
     border: 1px solid $main-doc-color;
     border-radius: 50%;
 }
+
+div.scroll-message {
+    overflow-y: scroll;
+}
