@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div class="container mt-4 pt-3 bg-white border rounded-4">
-        <h1 class="text-center mb-4">Messages</h1>
+        <h1 class="text-center mb-4 text-uppercase">Messages</h1>
         <div class="row g-3">
+
+            {{-- Show Message For Smartphone & Tablet --}}
             <div class="col-12 col-lg-8 d-block d-lg-none">
                 <div class="custom-card blue">
                     <ul class="list-group">
@@ -28,7 +30,7 @@
 
             <div class="col-12 col-lg-4 overflow-hidden">
                 <div class="custom-card blue h-75 overflow-hidden">
-                    <div class="scroll-message h-100">
+                    <div class="scroll-index h-100">
 
                         <label class="title mb-2">Messages</label>
                         <ul class="list-group">
@@ -59,7 +61,7 @@
                 </div>
             </div>
 
-            {{-- Inbox Message For Desktop --}}
+            {{-- Show Message For Desktop --}}
             <div class="col-12 col-lg-8 d-none d-lg-block">
                 <div class="custom-card blue">
                     <ul class="list-group">
