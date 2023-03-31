@@ -46,12 +46,17 @@ textarea:focus {
     padding: .4rem 1.3rem !important;
     background-color: $light-doc-color !important;
     border: 1px solid $light-doc-color !important;
-
+    
+    &.bg-sponsor {
+        font-weight: bold !important;
+        text-transform: uppercase !important;
+        background-color: $premium-color !important;
+        border: 1px solid $premium-color !important;
+    }
     &.bg-available {
         background-color: $av-light-available !important;
         border-color: $av-light-available !important;
     }
-
     &.bg-unavailable {
         background-color: $av-light-unavailable !important;
         border-color: $av-light-unavailable !important;
@@ -61,26 +66,19 @@ textarea:focus {
         background-color: $main-doc-color !important;
         border-color: $main-doc-color !important;
 
+        &.bg-sponsor {
+            background-color: $premium-dark-color !important;
+            border: 1px solid $premium-dark-color !important;
+        }
         &.bg-available {
             background-color: $av-available !important;
             border-color: $av-available !important;
         }
-
         &.bg-unavailable {
             background-color: $av-unavailable !important;
             border-color: $av-unavailable !important;
         }
     }
-}
-
-.btn-sponsor {
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: orange;
-    color: white;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    padding: 0.9rem 13.75rem;
 }
 
 // cards border
