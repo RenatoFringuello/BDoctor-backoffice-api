@@ -16,3 +16,20 @@ label.title {
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.star {
+    width: 25px;
+    height: 25px;
+    clip-path: polygon(50% 0%, 64% 33%, 98% 35%, 72% 57%, 79% 91%, 50% 70%, 21% 91%, 28% 57%, 2% 35%, 37% 33%);
+    // background: $star-active;
+    background: orange;
+    margin-right: .25rem;
+
+    &.half {
+        background: linear-gradient(90deg, orange 0%, orange 50%, black 50%, black 100%);
+    }
+
+    &.disabled {
+        background: black;
+    }
+}
