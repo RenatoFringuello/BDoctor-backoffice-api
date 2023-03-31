@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col pt-4">
+            <div class="col py-4">
                 <div class="card rounded-4">
                     <div class="card-body">
                         <h2>Dashboard</h2>
@@ -74,9 +74,14 @@
                         {{-- feedback and stats --}}
                         <div class="col-12 col-lg-8">
                             <div class="row g-3">
+                                {{-- become a premium btn --}}
+                                @if (Auth::user()->sponsors->first()->id == 1)
                                 <div class="col-12 text-center">
                                     <a href="{{route('sponsors.index')}}" class="btn doc-btn bg-sponsor d-inline-block w-100 p-3">Choose your Premium account</a>                                    
                                 </div>
+                                @endif
+
+                                {{-- messages button--}}
                                 @if (count($messages) != 0)
                                 <div class="col-6">
                                     <a href="{{route('messages.index')}}" class="btn doc-btn me-auto text-decoration-none text-white w-100">
@@ -84,6 +89,7 @@
                                     </a>
                                 </div>
                                 @endif
+                                {{-- reviews button --}}
                                 @if (count($reviews) != 0)
                                 <div class="col-6">
                                     <a href="{{route('reviews.index')}}" class="btn doc-btn me-auto text-decoration-none text-white w-100">
