@@ -39,7 +39,7 @@
         <section id="top-footer">
             <div class="row h-100">
                 <div class="col-12 col-md-6">
-                    <img src="{{ asset('assets/B-Doc-Logo.png') }}" alt="Main Logo" class="footer-logo">
+                    <img src="{{ asset('assets/B-Doc-Logo.png') }}" alt="Main Logo" class="footer-logo mb-2">
                     <p class="w-100">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, aspernatur totam?
                         Amet inventore eos possimus quis hic nulla debitis provident eveniet tempore sunt quod

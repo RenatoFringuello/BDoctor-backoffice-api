@@ -6,7 +6,7 @@
             <div class="col py-4">
                 <div class="card rounded-4">
                     <div class="card-body">
-                        <h2>Dashboard</h2>
+                        <h2 class="small-title">Dashboard</h2>
 
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        <div class="mb-3">
+                        <div class="mb-3 text-uppercase fs-3">
                             {{ __('Welcome back ' . Auth::user()->name) }}
                         </div>
                         <div class="row g-3">
