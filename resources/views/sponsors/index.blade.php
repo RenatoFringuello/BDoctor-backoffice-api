@@ -1,39 +1,54 @@
 @extends('layouts.app')
 @section('content')
-  
- <div class="container mt-4 pt-3 bg-white border rounded-4">
-    <div class="row">
+<div class="container">
+    <div class=" mt-4 p-3 px-lg-0 card rounded-4">
         <h1 class="text-center font-weight-bold mb-5">Choose your Sponsorization Plan</h1>      
-        <div class="col-lg-12 d-lg-flex flex-lg-row flex-md-column justify-content-between">   
-                @foreach ($sponsors as $sponsor)             
-                    @if($sponsor->id != 1)
-                    <div class="col-lg-3 col-md-10 col-sm-9 text-center custom-card blue sponsor-card">
-                        <div class="sponsor-type rounded-4 p-1 mb-4">
-                            <h2 class="text-capitalize rounded-4  font-weight-bold">{{ $sponsor->type }}</h2>
+        {{-- cards container --}}
+        <div class="row g-3 mb-3">
+            @foreach ($sponsors as $sponsor) 
+            {{-- card --}}
+                @if($sponsor->id != 1)
+                <div class="col-12 col-lg-4 px-lg-4">
+                    <div class="text-center custom-card blue h-100 d-flex flex-column justify-content-between">
+                        {{-- title --}}
+                        <h2 class="sponsor-type rounded-2 p-1 text-capitalize fw-bold">{{ $sponsor->type }}</h2>
+                        
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            {{-- price --}}
+                            <div class="my-4">
+                                <div class="fs-2">{{$sponsor->price}} &euro;/month</div>
+                                @if ($sponsor->id >= 3)
+                                {{-- save --}}
+                                <div class="price">
+                                    @if ($sponsor->id == 4)
+                                    Recommended 
+                                    @endif
+                                    save 
+                                    <span class="price-box discount">
+                                        ${{($sponsors[1]->price * ($sponsor->duration / 24)) - $sponsor->price}}
+                                    </span>
+                                </div>
+                                @endif
+                            </div>
+
+                            {{-- duration --}}
+                            <div class="text-capitalize fs-4 mb-3">duration: {{$sponsor->duration}} hours</div>                           
                         </div>
+                        {{-- bottom --}}
                         <div>
-                           <span class="fs-2">
-                            {{$sponsor->price}} &euro;/month
-                           </span>
+                            <a href="{{ route('payment', ['sponsor' => $sponsor]) }}" class="btn doc-btn">Buy now</a>
                         </div>
-                        <div class="my-3">
-                            <span class="text-capitalize fs-4 ">duration:  {{$sponsor->duration}} hours</span> 
-                           
-                        </div>
-                        <button  class="btn btn-primary doc-btn my-3">
-                            <a href="Acquista" class="text-white text-decoration-none">Acquista</a>
-                        </button>
                     </div>
-                    @endif
-                
-                @endforeach   
+                </div>
+                @endif
+            @endforeach  
         </div>
-            
-        <div class="col-2 ">
-            <button  class="btn btn-primary doc-btn my-4">
-                <a href="{{route('dashboard')}}" class="text-white text-decoration-none">Dashboard</a>
-            </button>   
+
+        {{-- button dashboard --}}
+        <div class="px-lg-3">
+            <a href="{{route('dashboard')}}" class="btn doc-btn">Dashboard</a>
         </div> 
     </div>
+
 </div>
 @endsection

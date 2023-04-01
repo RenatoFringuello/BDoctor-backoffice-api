@@ -13,7 +13,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -28,10 +27,13 @@
     <div id="app">
 
         @include('layouts.partials.header')
-
-        <main class="">
+        
+        {{-- <main class="min-h-80 d-flex justify-content-center align-items-center"> TO CENTER EVERY CONTENT SMALLER THAN 90VH--}}
+        <main class="min-h-80">
             @yield('content')
         </main>
+
+        @include('layouts.partials.footer')
     </div>
 </body>
 

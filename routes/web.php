@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
+
+use App\Http\Controllers\BraintreeController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewsController;
@@ -43,5 +45,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/reviews', ReviewsController::class);
     Route::resource('/sponsors', SponsorsController::class);
 });
+
+// Route for payment
+Route::get('/payment', [BraintreeController::class, 'token'])->name('payment');
+Route::post('/payment/process', [BraintreeController::class, 'process'])->name('payment.process');
 
 require __DIR__ . '/auth.php';
