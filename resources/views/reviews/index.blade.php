@@ -7,7 +7,7 @@
             {{-- Show Review For Smartphone & Tablet --}}
             <div class="col-12 col-lg-8 d-block d-lg-none">
                 <div class="custom-card blue">
-                    <ul class="list-group">
+                    <ul class="list-group scroller">
                         @foreach ($reviews as $key => $review)
                             <li class="list-group-item rounded-2 p-3 @if ($key != $reviewSelected) d-none @endif">
                                 <div class="row text-decoration-none">
@@ -60,13 +60,11 @@
                 </div>
             </div>
 
-
-
-            <div class="col-12 col-lg-4 overflow-hidden">
-                <div class="custom-card blue h-75 overflow-hidden">
-                    <div class="scroll-index h-100">
+            <div class="col-12 col-lg-4">
+                <div class="custom-card blue ">
+                    <div class="scroll-index h-100 rounded-2">
                         <label class="title mb-2">Reviews</label>
-                        <ul class="list-group">
+                        <ul class="list-group scroller">
                             @foreach ($reviews as $key => $review)
                                 <li class="list-group-item py-2">
                                     <a href="{{ route('reviews.index', ['key' => $key]) }}"

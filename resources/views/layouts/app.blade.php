@@ -31,8 +31,8 @@
 
         @include('layouts.partials.header')
         
-        {{-- <main class="min-h-80 d-flex justify-content-center align-items-center"> TO CENTER EVERY CONTENT SMALLER THAN 90VH--}}
-        <main class="min-h-80">
+        <main class="min-h-80 d-flex justify-content-center align-items-center"> 
+        {{-- <main class="min-h-80"> --}}
             @yield('content')
         </main>
 
