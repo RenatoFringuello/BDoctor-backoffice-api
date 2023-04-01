@@ -1,5 +1,20 @@
 @use './variables' as *;
 
+//boxes
+.box-lime,
+.box-magenta {
+    color: black;
+    padding: .2rem;
+
+    &.box-lime {
+        background-color: lime;
+    }
+    
+    &.box-magenta {
+        background-color: magenta;
+    }
+}
+
 // price
 .price{
     color: inherit;
@@ -24,13 +39,12 @@ input,
 textarea {
     border: 2px solid $main-doc-color !important;
     width: 100%;
-}
-
-input:focus,
-textarea:focus {
-    border: 2px solid $main-doc-color !important;
-    box-shadow: $main-doc-color 0px 6px 12px -2px, #ffffff4d 0px 3px 7px -3px !important;
-    outline: none !important;
+    
+    &:focus {
+        border: 2px solid $main-doc-color !important;
+        box-shadow: $main-doc-color 0px 6px 12px -2px, #ffffff4d 0px 3px 7px -3px !important;
+        outline: none !important;
+    }
 }
 
 .sponsor-type {
