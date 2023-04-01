@@ -68,7 +68,7 @@
                                                 @endif
 
                                                 @if (isset(Auth::user()->profile->services))
-                                                    <div class="mb-2 fs-5">Services</div>
+                                                    <div class="mb-2 fs-5">Services </div>
                                                     <p class="card text-dark m-0 p-2">
                                                         {{ Auth::user()->profile->services }}
                                                     </p>
