@@ -1,5 +1,9 @@
 @use './variables' as *;
 
+.min-h-80{
+    min-height: 80vh;
+}
+
 //the input button in form control when it's a file input
 .form-control::file-selector-button{
     color: white !important;

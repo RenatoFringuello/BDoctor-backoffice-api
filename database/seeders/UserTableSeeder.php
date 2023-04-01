@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Braintree\Customer as Braintree_Customer;
 
 class UserTableSeeder extends Seeder
 {
@@ -302,6 +304,16 @@ class UserTableSeeder extends Seeder
 
         foreach ($users as $user) {
             $newUser = new User();
+            // using your customer id we will create
+            // brain tree customer id with same id
+            $response = Braintree_Customer::create([
+                'id' => $newUser->id
+            ]);
+            // save your braintree customer id
+
+            if ($response->success) {
+                $newUser->customer_id = $response->customer->id;
+            }
             $newUser->name = $user['name'];
             $newUser->lastname = $user['lastname'];
             $newUser->email = $user['email'];

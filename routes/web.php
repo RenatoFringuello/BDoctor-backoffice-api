@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
+
+use App\Http\Controllers\BraintreeController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\SponsorsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,6 +43,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
     Route::resource('/messages', MessagesController::class);
     Route::resource('/reviews', ReviewsController::class);
+    Route::resource('/sponsors', SponsorsController::class);
 });
+
+// Route for payment
+Route::get('/payment', [BraintreeController::class, 'token'])->name('payment');
+Route::post('/payment/process', [BraintreeController::class, 'process'])->name('payment.process');
 
 require __DIR__ . '/auth.php';

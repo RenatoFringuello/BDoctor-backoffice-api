@@ -12,31 +12,51 @@ class ApiDoctorsController extends Controller
     public function index(Request $request)
     {
         if ($request->specializations && Specialization::where('name', '=', $request->specializations)->get()->toArray()) {
-            //filtra i risultati per specializzazione(sempre) AND se la specializzazione richiesta esiste; 
-            $user_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+            /**
+             * user_query_featured prende tutti i dottori con lo sponsor
+             */
+            $users_query_featured = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
                 ->withAvg('reviews', 'rating')
                 ->withCount('reviews')
                 ->whereHas('profile.specializations', function ($query) use ($request) {
                     $query->where('name', $request->specializations);
+                })
+                ->whereHas('sponsors', function ($query) use ($request) {
+                    $query->where('id', '<>', '1');
                 });
-
-            if($request->sortByAvg){
-                //se viene richiesto un sort per avg
-                $user_query->orderBy('reviews_avg_rating', 'DESC');
-            }
-            if($request->sortByCount){
-                //se viene richiesto un sort per count
-                $user_query->orderBy('reviews_count', 'DESC');
-            }
+            /**
+             * user_query_not_featured prende tutti i dottori senza Sponsor
+             */
+            $users_query_not_featured = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+                ->withAvg('reviews', 'rating')
+                ->withCount('reviews')
+                ->whereHas('profile.specializations', function ($query) use ($request) {
+                    $query->where('name', $request->specializations);
+                })
+                ->whereHas('sponsors', function ($query) use ($request) {
+                    $query->where('id', '=', '1');
+                });
             
-            //get the results
-            $user_query->get();
-            //then create the pagination
-            $user = $user_query->paginate(10);
+            //con queste condizioni vengono fatti gli orderBy average and count
+            if ($request->sortByAvg) {
+                //se viene richiesto un sort per avg
+                $users_query_featured->orderBy('reviews_avg_rating', 'DESC');
+                $users_query_not_featured->orderBy('reviews_avg_rating', 'DESC');
+            }
+            if ($request->sortByCount) {
+                //se viene richiesto un sort per count
+                $users_query_featured->orderBy('reviews_count', 'DESC');
+                $users_query_not_featured->orderBy('reviews_count', 'DESC');
+            }
 
+            //merge the queries ordered in a single collection
+            $users = $users_query_featured->get()->merge($users_query_not_featured->get());
+            //then create the pagination
+            $users = $this->paginate($users, 8);
+            
             return response()->json([
                 'success' => true,
-                'results' => $user
+                'results' => $users,
             ]);
         } else {
             //se la ricerca non viene fatta per specializzazione allora return false
@@ -57,6 +77,24 @@ class ApiDoctorsController extends Controller
         return response()->json([
             'success' => true,
             'results' => $user,
+        ]);
+    }
+
+    public function sponsored(Request $request)
+    {
+        $users_query = User::with(['profile', 'profile.specializations', 'sponsors', 'reviews'])
+            ->withAvg('reviews', 'rating')
+            ->withCount('reviews')
+            ->whereHas('sponsors', function ($query) use ($request) {
+                $query->where('id', '<>', '1');
+            })
+            ->get();
+
+
+        //se la ricerca non viene fatta per specializzazione allora return false
+        return response()->json([
+            'success' => true,
+            'results' => $users_query
         ]);
     }
 }
