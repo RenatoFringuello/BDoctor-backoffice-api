@@ -1,37 +1,37 @@
 @php
     $socialList = [
-            [
-                'url' => '#',
-                'path' => 'fa-instagram',
-            ],
-            [
-                'url' => '#',
-                'path' => 'fa-facebook',
-            ],
-            [
-                'url' => '#',
-                'path' => 'fa-twitter',
-            ]
-        ];
-        $footerMenu = [
-            [
-                'title' => 'Team 6',
-                'list' => ['Alessio De Angelis', 'Roberto Carta Mantiglia', 'Renato Fringuello', 'Claudio Emmolo'],
-            ],
-            [
-                'title' => 'Bool Teach',
-                'list' => ['Riccardo Petricca', 'Luigi Micco', 'Stefano Cappellini'],
-            ],
-            [
-                'title' => 'Policy',
-                'list' => ['Notes', 'Policy', 'Cookies', 'Help', 'Teams'],
-            ]
-        ];
+        [
+            'url' => '#',
+            'path' => 'fa-instagram',
+        ],
+        [
+            'url' => '#',
+            'path' => 'fa-facebook',
+        ],
+        [
+            'url' => '#',
+            'path' => 'fa-twitter',
+        ],
+    ];
+    $footerMenu = [
+        [
+            'title' => 'Team 6',
+            'list' => ['Alessio De Angelis', 'Roberto Carta Mantiglia', 'Renato Fringuello', 'Claudio Emmolo'],
+        ],
+        [
+            'title' => 'Bool Teach',
+            'list' => ['Riccardo Petricca', 'Luigi Micco', 'Stefano Cappellini'],
+        ],
+        [
+            'title' => 'Policy',
+            'list' => ['Notes', 'Policy', 'Cookies', 'Help', 'Teams'],
+        ],
+    ];
 @endphp
 
 <footer class="position-relative">
-    <div class="wave-shape">
-        {{-- <img :src="store.getImgPath('bottom-shape', 'png')" alt=""> --}}
+    <div class="wave-shape mt-5">
+        <img src="{{ asset('assets/bottom-shape.png') }}" alt="">
     </div>
     <div class="container h-100">
 
@@ -39,7 +39,7 @@
         <section id="top-footer">
             <div class="row h-100">
                 <div class="col-12 col-md-6">
-                    {{-- <img :src="store.getImgPath('B-Doc-Logo', 'png')" alt="BDoctor Logo" class="mb-3"> --}}
+                    <img src="{{ asset('assets/B-Doc-Logo.png') }}" alt="Main Logo" class="footer-logo">
                     <p class="w-100">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, aspernatur totam?
                         Amet inventore eos possimus quis hic nulla debitis provident eveniet tempore sunt quod
@@ -51,20 +51,20 @@
                     <div class="row w-100 d-flex justify-content-around ps-md-5">
                         {{-- foreach --}}
                         @foreach ($footerMenu as $menu)
-                        <div class="col-12 col-md-4 mb-3 mb-md-0">
-                            <div class="list-item">
-                                <h4>{{ $menu['title'] }}</h4>
-                                <ul>
-                                    @foreach ($menu['list'] as $list)  
-                                    <li>
-                                        <a href="#">
-                                            {{ $list }}
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                </ul>
+                            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                                <div class="list-item">
+                                    <h4>{{ $menu['title'] }}</h4>
+                                    <ul>
+                                        @foreach ($menu['list'] as $list)
+                                            <li>
+                                                <a href="#">
+                                                    {{ $list }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -82,13 +82,13 @@
                         <span class="box-lime">Lime</span><span class="box-magenta">Magenta</span> Company
                     </p>
                 </div>
-                {{-- <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end">
+                <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end">
                     @foreach ($socialList as $social)
-                    <a href="#">
-                        <i class="{{$social['path']}}" class="fa-brands fs-3 text-light me-3"></i>
-                    </a>
+                        <a href="#">
+                            <i class="{{ $social['path'] }} fa-brands fs-3 text-light me-3"></i>
+                        </a>
                     @endforeach
-                </div> --}}
+                </div>
             </div>
         </section>
     </div>
