@@ -5,7 +5,7 @@
         <div class="row g-3">
 
             {{-- Show Message For Smartphone & Tablet --}}
-            <div class="col-12 col-lg-8 d-block d-lg-none">
+            {{-- <div class="col-12 col-lg-8 d-block d-lg-none">
                 <div class="custom-card blue">
                     <ul class="list-group">
                         @foreach ($messages as $key => $message)
@@ -26,14 +26,14 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-12 col-lg-4 overflow-hidden">
-                <div class="custom-card blue h-75 overflow-hidden">
-                    <div class="scroll-index h-100">
+            <div class="col-12 col-lg-4">
+                <div class="custom-card blue">
+                    <div class="scroll-index rounded-2">
 
                         <label class="title mb-2">Messages</label>
-                        <ul class="list-group">
+                        <ul class="list-group incoming-mail">
                             @foreach ($messages as $key => $message)
                                 <li class="list-group-item py-2">
                                     <a href="{{ route('messages.index', ['key' => $key]) }}"
@@ -62,7 +62,7 @@
             </div>
 
             {{-- Show Message For Desktop --}}
-            <div class="col-12 col-lg-8 d-none d-lg-block">
+            <div class="col-12 col-lg-8 ">
                 <div class="custom-card blue">
                     <ul class="list-group">
                         @foreach ($messages as $key => $message)
@@ -75,8 +75,11 @@
                                     <div class="col-2 d-flex">
                                         <div class="availability-dot rounded-circle bg-primary m-auto"></div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 mb-3">
                                         {{ $message->content }}
+                                    </div>
+                                    <div>
+                                        <a href="mailto:{{ $message->email }}" class="btn doc-btn text-white text-decoration-none">Reply via Mail</a>
                                     </div>
                                 </div>
                             </li>
