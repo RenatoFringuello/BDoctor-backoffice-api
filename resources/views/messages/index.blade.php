@@ -33,7 +33,7 @@
                     <div class="scroll-index rounded-2">
 
                         <label class="title mb-2">Messages</label>
-                        <ul class="list-group incoming-mail">
+                        <ul class="list-group scroller">
                             @foreach ($messages as $key => $message)
                                 <li class="list-group-item py-2">
                                     <a href="{{ route('messages.index', ['key' => $key]) }}"
