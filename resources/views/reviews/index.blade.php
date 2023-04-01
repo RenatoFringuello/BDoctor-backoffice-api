@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mt-4 pt-3 bg-white border rounded-4">
 
-        <h1 class="text-center mb-4 text-uppercase">Reviews</h1>
+        <h1 class="small-title mb-4">Reviews</h1>
 
         <div class="row g-3">
             {{-- Show Review For Smartphone & Tablet --}}

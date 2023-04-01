@@ -4,7 +4,11 @@
 @use './partials/bootstrapMissings' as *;
 @import '~bootstrap/scss/bootstrap';
 
+// Google Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
+    font-family: 'Poppins', sans-serif;
     background: $light-doc-color;
     background: linear-gradient(0deg, $light-doc-color 0%, $light-doc-color 47%, $light-pro-color 99%, $light-pro-color 100%);
     background-size: cover;
@@ -12,9 +16,21 @@ body {
     min-height: 100vh;
 }
 
+.small-title {
+    font-weight: 200;
+}
+
 .title {
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.dashboard-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid $main-doc-color;
 }
 
 .user-icon {

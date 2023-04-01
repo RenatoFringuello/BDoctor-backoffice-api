@@ -80,12 +80,14 @@
                                     </span>
                                     {{ __('Review') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('sponsors.index') }}">
-                                    <span>
-                                        <i class="fa-solid fa-certificate text-warning"></i>
-                                    </span>
-                                    {{ __('Sponsors') }}
-                                </a>
+                                @if (Auth::user()->sponsors->first()->id == 1)
+                                    <a class="dropdown-item" href="{{ route('sponsors.index') }}">
+                                        <span>
+                                            <i class="fa-solid fa-certificate text-warning"></i>
+                                        </span>
+                                        {{ __('Sponsors') }}
+                                    </a>
+                                @endif
                                 <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
