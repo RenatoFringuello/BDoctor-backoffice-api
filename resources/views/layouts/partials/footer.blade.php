@@ -19,19 +19,19 @@
             'list' => [
                 [
                     'name' => 'Alessio De Angelis',
-                    'href' => 'https://github.com/DeAngelisDev16'
+                    'href' => 'https://github.com/DeAngelisDev16',
                 ],
                 [
                     'name' => 'Roberto Carta Mantiglia',
-                    'href' => 'https://github.com/RobertoCartaMantiglia'
+                    'href' => 'https://github.com/RobertoCartaMantiglia',
                 ],
                 [
                     'name' => 'Renato Fringuello',
-                    'href' => 'https://github.com/RenatoFringuello'
+                    'href' => 'https://github.com/RenatoFringuello',
                 ],
                 [
                     'name' => 'Claudio Emmolo',
-                    'href' => 'https://github.com/Claudio-Emmolo'
+                    'href' => 'https://github.com/Claudio-Emmolo',
                 ],
             ],
         ],
@@ -40,15 +40,15 @@
             'list' => [
                 [
                     'name' => 'Riccardo Petricca',
-                    'href' => '#'
+                    'href' => '#',
                 ],
                 [
                     'name' => 'Luigi Micco',
-                    'href' => 'https://github.com/luigimicco'
+                    'href' => 'https://github.com/luigimicco',
                 ],
                 [
                     'name' => 'Stefano Cappellini',
-                    'href' => 'https://github.com/StefanoCappellini'
+                    'href' => 'https://github.com/StefanoCappellini',
                 ],
             ],
         ],
@@ -57,23 +57,23 @@
             'list' => [
                 [
                     'name' => 'Notes',
-                    'href' => '#'
+                    'href' => '#',
                 ],
                 [
                     'name' => 'Policy',
-                    'href' => '#'
+                    'href' => '#',
                 ],
                 [
                     'name' => 'Cookies',
-                    'href' => '#'
+                    'href' => '#',
                 ],
                 [
                     'name' => 'Help',
-                    'href' => '#'
+                    'href' => '#',
                 ],
                 [
                     'name' => 'Teams',
-                    'href' => '#'
+                    'href' => '#',
                 ],
             ],
         ],
@@ -81,7 +81,7 @@
 @endphp
 
 <footer class="position-relative">
-    <div class="wave-shape mt-5">
+    <div class="wave-shape">
         <img src="{{ asset('assets/bottom-shape.png') }}" alt="">
     </div>
     <div class="container h-100">
@@ -108,7 +108,7 @@
                                     <ul>
                                         @foreach ($menu['list'] as $list)
                                             <li>
-                                                <a href="{{$list['href']}}">
+                                                <a href="{{ $list['href'] }}">
                                                     {{ $list['name'] }}
                                                 </a>
                                             </li>
