@@ -63,6 +63,7 @@ class RegisteredUserController extends Controller
         $user->password = Hash::make($request->password);
         $user->isActive = true;
         $user->save();
+        $user->sponsors()->attach([1]);
 
         // Profile Data
         $profile = new Profile();
