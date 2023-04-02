@@ -22,7 +22,7 @@ class ApiReviewsController extends Controller
                 'name' => 'required|string',
                 'lastname' => 'required|string',
                 'content' => 'required|string',
-                'rating' => 'required|numeric'
+                'rating' => 'required|numeric|min:0|max:10'
             ]
         );
 

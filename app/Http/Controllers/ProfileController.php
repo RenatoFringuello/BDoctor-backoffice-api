@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\Profile;
 use App\Models\Specialization;
+use App\Models\Sponsor;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -22,6 +24,7 @@ class ProfileController extends Controller
         return view('profile.edit', [
             'user' => $request->user(),
             'specializations' => Specialization::all(),
+            'sponsors' => Sponsor::all(),
         ]);
     }
 
@@ -30,6 +33,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        //for update user data
         $request->user()->fill($request->validated());
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

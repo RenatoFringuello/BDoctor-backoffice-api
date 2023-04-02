@@ -1,5 +1,9 @@
 @use './variables' as *;
 
+.min-h-80{
+    min-height: 80vh;
+}
+
 //the input button in form control when it's a file input
 .form-control::file-selector-button{
     color: white !important;
@@ -9,6 +13,9 @@
 //fonts
 .fs-small{
     font-size: small !important;
+}
+.fs-xsmall{
+    font-size: x-small !important;
 }
 
 .bg-available{

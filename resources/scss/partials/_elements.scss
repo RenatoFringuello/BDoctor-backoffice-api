@@ -1,17 +1,63 @@
 @use './variables' as *;
 
+//boxes
+.box-lime,
+.box-magenta {
+    color: black;
+    padding: .2rem;
+
+    &.box-lime {
+        background-color: lime;
+    }
+    
+    &.box-magenta {
+        background-color: magenta;
+    }
+}
+
+.scroller{
+    overflow-x: hidden;
+    max-height: 50vh;
+}
+
+// price
+.price{
+    color: inherit;
+    opacity: .8;
+    .price-box{
+        display: inline-block;
+        position: relative;
+        &.discount::after{
+            content: '';
+            border:1px solid $av-light-unavailable;
+            width: 105%;
+            position: absolute;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            top:50%;
+            left:50%;
+        }
+    }
+}
+
 /* inputs and textareas */
 input,
 textarea {
     border: 2px solid $main-doc-color !important;
     width: 100%;
+    
+    &:focus {
+        border: 2px solid $main-doc-color !important;
+        box-shadow: $main-doc-color 0px 6px 12px -2px, #ffffff4d 0px 3px 7px -3px !important;
+        outline: none !important;
+    }
 }
 
-input:focus,
-textarea:focus {
-    border: 2px solid $main-doc-color !important;
-    box-shadow: $main-doc-color 0px 6px 12px -2px, #ffffff4d 0px 3px 7px -3px !important;
-    outline: none !important;
+.sponsor-type {
+    background-color: $light-doc-color;
+}
+
+.sponsor-card {
+    margin: 0 auto 1.2rem;
 }
 
 /* buttons */
@@ -21,11 +67,17 @@ textarea:focus {
     background-color: $light-doc-color !important;
     border: 1px solid $light-doc-color !important;
     
-    &.bg-available{
+    &.bg-sponsor {
+        font-weight: bold !important;
+        text-transform: uppercase !important;
+        background-color: $premium-color !important;
+        border: 1px solid $premium-color !important;
+    }
+    &.bg-available {
         background-color: $av-light-available !important;
         border-color: $av-light-available !important;
     }
-    &.bg-unavailable{
+    &.bg-unavailable {
         background-color: $av-light-unavailable !important;
         border-color: $av-light-unavailable !important;
     }
@@ -33,12 +85,16 @@ textarea:focus {
     &:hover {
         background-color: $main-doc-color !important;
         border-color: $main-doc-color !important;
-        
-        &.bg-available{
+
+        &.bg-sponsor {
+            background-color: $premium-dark-color !important;
+            border: 1px solid $premium-dark-color !important;
+        }
+        &.bg-available {
             background-color: $av-available !important;
             border-color: $av-available !important;
         }
-        &.bg-unavailable{
+        &.bg-unavailable {
             background-color: $av-unavailable !important;
             border-color: $av-unavailable !important;
         }
@@ -46,24 +102,26 @@ textarea:focus {
 }
 
 // cards border
-.custom-card{
+.custom-card {
     border-radius: .7rem;
     padding: .5rem;
     color: white;
-    &.blue{
-        background:$light-pro-color;
+
+    &.blue {
+        background: $light-pro-color;
     }
-    &.cyan{
-        background:$light-doc-color;
+
+    &.cyan {
+        background: $light-doc-color;
     }
 }
 
 //availability-dot
-.availability-dot{
+.availability-dot {
     display: inline-block;
-    width:  12px;
+    width: 12px;
     height: 12px;
-    cursor:help;
+    cursor: help;
 }
 
 /* checkboxes */
@@ -86,17 +144,18 @@ textarea:focus {
         position: absolute;
         width: 1px;
     }
-    
+
     .checkbox {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         width: fit-content;
         cursor: pointer;
-        
-        + .checkbox {
+
+        +.checkbox {
             margin-top: var(--s-small);
         }
+
         .icon-checkbox {
             width: 1em;
             height: 1em;
@@ -117,7 +176,7 @@ textarea:focus {
             }
         }
     }
-    
+
     .checkbox__symbol {
         display: inline-block;
         display: flex;
@@ -149,8 +208,8 @@ textarea:focus {
         margin: 0;
     }
 
-    .checkbox__trigger{
-        &:checked + .checkbox__symbol{
+    .checkbox__trigger {
+        &:checked+.checkbox__symbol {
             &:after {
                 -webkit-animation: ripple-33 1.5s var(--e-out);
                 animation: ripple-33 1.5s var(--e-out);
@@ -161,7 +220,8 @@ textarea:focus {
                 stroke-dashoffset: 0px;
             }
         }
-        &:focus + .checkbox__symbol {
+
+        &:focus+.checkbox__symbol {
             box-shadow: 0 0 0 0.25em $main-doc-color-33opacity;
         }
     }

@@ -11,6 +11,8 @@
                             'title' => 'Complete your profile',
                             'method' => 'put',
                             'routeName' => 'profile.register.update', //Controller Profile
+                            'className' => '',
+                            'isRegistered' => true
                         ])
                     </div>
                 </div>

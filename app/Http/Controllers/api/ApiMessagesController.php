@@ -20,7 +20,7 @@ class ApiMessagesController extends Controller
                 'name' => 'required|string',
                 'lastname' => 'required|string',
                 'email' => 'required|email',
-                'content' => 'required|text',
+                'content' => 'required|string',
             ]
         );
 
@@ -28,7 +28,7 @@ class ApiMessagesController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->error()
+                'errors' => $validator->errors()
             ]);
         };
 

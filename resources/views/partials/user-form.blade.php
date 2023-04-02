@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route($routeName) }}">
+<form method="POST" action="{{ route($routeName) }}" id="form" class="{{$className}}">
     @csrf
     @method($method)
 
@@ -52,8 +52,24 @@
         </div>
     </div>
 
+    {{-- pw --}}
     @if ($routeName === 'register')
-        {{-- pw --}}
+    <hr>
+        {{-- <div class="mb-4 row">
+            <label for="current_password" class="col-md-4 col-form-label text-md-right title">{{__('Current Password*')}}</label>
+            
+            <div class="col-md-6">
+                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror"
+                    name="current_password" autocomplete="current-password" required minlength="8">
+
+                @error('current_password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div> --}}
+
         <div class="mb-4 row">
             <label for="password" class="col-md-4 col-form-label text-md-right title">{{ __('Password*') }}</label>
 
@@ -78,8 +94,15 @@
                     autocomplete="new-password" required minlength="8">
             </div>
         </div>
-        {{-- end pw --}}
+        <hr>
+    @else
+    {{-- for the password and checkbox frontend validation --}}
+    <input type="hidden" id="password" value="0">
+    <input type="hidden" id="password-confirm" value="0">
     @endif
+
+    {{-- end pw --}}
+        
 
 
     <div class="mb-4 row">
@@ -91,7 +114,8 @@
                 @if ($routeName === 'register') value="{{ old('address') }}" 
                 @else
                 value="{{ old('address', $user->profile->address) }}" @endif
-                autocomplete="address" autofocus>
+                autocomplete="address" autofocus
+                required>
 
             @error('address')
                 <span class="invalid-feedback" role="alert">
@@ -114,10 +138,10 @@
                 <div class="checkbox-wrapper-33">
                     <label class="checkbox" for="{{ $specialization->name }}">
                         {{-- Input --}}
-                        <input class="checkbox__trigger visuallyhidden" required:valid   type="checkbox"
+                        <input class="checkbox__trigger visuallyhidden"  type="checkbox"
                             id="{{ $specialization->name }}" name="specializations[]"
                             value="{{ $specialization->id }}" autofocus
-                            @if ($errors->any()) @checked(in_array($specialization->id, old('specialization',[])))
+                            @if ($errors->all()) @checked(in_array($specialization->id, old('specialization',[])))
                             {{-- checked true = $user->profile->specializations != null --}}
                             @else @checked(isset($user->profile->specializations) ? $user->profile->specializations->contains($specialization->id) : false) @endif>
 
@@ -137,7 +161,7 @@
     {{-- Button Send --}}
     <div class="mb-4 row mb-0">
         <div class="text-end me-5">
-            <button type="submit" class="btn doc-btn">
+            <button type="submit" class="btn doc-btn" id="send">
                 {{ __('Send') }}
             </button>
         </div>

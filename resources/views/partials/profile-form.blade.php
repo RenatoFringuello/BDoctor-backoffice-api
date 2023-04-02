@@ -4,6 +4,8 @@
 
     <h3 class="mt-2 mb-5 fw-bold text-uppercase text-center">{{ $title }}</h3>
 
+    <input type="hidden" name="isRegistered" value="{{$isRegistered}}">
+
     {{-- Picture --}}
     <div class="mb-4 row">
         <label for="picture" class="col-md-4 col-form-label text-md-right title">{{ __('Add Picture') }}</label>
@@ -25,7 +27,7 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class=" @error('bio') is-invalid @enderror" name="bio" autocomplete="bio" autofocus cols="30"
+            <textarea class="form-control @error('bio') is-invalid @enderror" name="bio" autocomplete="bio" autofocus cols="30"
                 rows="10" minlength="10" maxlength="1000">{{ old('bio', $user->profile->bio) }}
             </textarea>
 
@@ -43,7 +45,7 @@
     <div class="mb-4 row form-floating">
 
         <div class="col-md-12">
-            <textarea class="@error('services') is-invalid @enderror" name="services" autocomplete="services" autofocus
+            <textarea class="form-control @error('services') is-invalid @enderror" name="services" autocomplete="services" autofocus
                 cols="30" rows="10" minlength="10" maxlength="1000" >{{ old('services', $user->profile->services) }}</textarea>
 
             @error('services')

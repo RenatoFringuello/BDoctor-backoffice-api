@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\Auth\ProfileController as AuthProfileController;
+
+use App\Http\Controllers\BraintreeController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\SponsorsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +27,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $messages = Auth::user()->messages;
+        $reviews = Auth::user()->reviews;
+        return view('dashboard', compact('messages', 'reviews'));
     })->name('dashboard');
 
     // Profile Register
@@ -31,6 +40,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::put('profile/update', [AuthProfileController::class, 'update'])
         ->name('profile.register.update');
+    //Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+    Route::resource('/messages', MessagesController::class);
+    Route::resource('/reviews', ReviewsController::class);
+    Route::resource('/sponsors', SponsorsController::class);
 });
+
+// Route for payment
+Route::get('/payment', [BraintreeController::class, 'token'])->name('payment');
+Route::post('/payment/process', [BraintreeController::class, 'process'])->name('payment.process');
 
 require __DIR__ . '/auth.php';
