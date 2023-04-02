@@ -4,7 +4,7 @@
     <script src="https://js.braintreegateway.com/web/dropin/1.34.0/js/dropin.min.js"></script>
     <div class="container">
         <div class="row">
-            <div class="col-12 card mt-3 p-3">
+            <div class="col-12 col-lg-5 m-auto card mt-3 p-3">
                 <h2 class="title">Cart</h2>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between">
@@ -35,17 +35,21 @@
                     container: '#dropin-container'
                 }, (error, dropinInstance) => {
                     if (error) console.error(error);
-
-                    form.addEventListener('submit', event => {
-                        event.preventDefault();
-
-                        dropinInstance.requestPaymentMethod((error, payload) => {
-                            if (error) console.error(error);
+                    
+                    // è un reindirizzamento a un form di selezione delle carte salvate
+                    // form.addEventListener('submit', event => {
+                    //     event.preventDefault();
+                        
+                    //     dropinInstance.requestPaymentMethod((error, payload) => {
+                    //         if (error) console.error(error);
                             
-                            document.getElementById('nonce').value = payload.nonce;
-                            form.submit();
-                        });
-                    });
+                    //         document.getElementById('nonce').value = payload.nonce;
+
+                    //         setTimeout(() => {
+                    //             form.submit();
+                    //         }, 44000);
+                    //     });
+                    // });
                 });
             </script>
         </div>

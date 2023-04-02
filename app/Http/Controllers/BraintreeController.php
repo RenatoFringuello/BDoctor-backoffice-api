@@ -23,10 +23,11 @@ class BraintreeController extends Controller
         return view('braintree', ['token' => $clientToken, 'sponsor' => $sponsor]);
     }
 
-    public function process(Request $request) {
+    public function process(Request $request)
+    {
         //pagamento avvenuto con successo
         Auth::user()->sponsors()->sync([$request->sponsor]);
         // dd(Auth::user()->sponsors);
-        return Redirect::route('dashboard', ['paymentStatus'=> $request->paymentStatus]);
+        return Redirect::route('dashboard', ['paymentStatus' => $request->paymentStatus])->with('popup-message', 'DONE!');
     }
 }

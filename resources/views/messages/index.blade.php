@@ -3,31 +3,7 @@
     <div class="container mt-4 pt-3 bg-white border rounded-4">
         <h1 class="small-title mb-4">Messages</h1>
         <div class="row g-3">
-
-            {{-- Show Message For Smartphone & Tablet --}}
-            {{-- <div class="col-12 col-lg-8 d-block d-lg-none">
-                <div class="custom-card blue">
-                    <ul class="list-group">
-                        @foreach ($messages as $key => $message)
-                            <li class="list-group-item rounded-2 p-3 @if ($key != $messageSelected) d-none @endif">
-                                <div class="row text-decoration-none">
-                                    <div class="col-10">
-                                        <div>{{ $message->name }}</div>
-                                        <pre class="fs-small text-wrap text-secondary">{{ $message->email }}</pre>
-                                    </div>
-                                    <div class="col-2 d-flex">
-                                        <div class="availability-dot rounded-circle bg-primary m-auto"></div>
-                                    </div>
-                                    <div class="col-12">
-                                        {{ $message->content }}
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div> --}}
-
+            {{-- messages list --}}
             <div class="col-12 col-lg-4">
                 <div class="custom-card blue">
                     <div class="scroll-index rounded-2">
@@ -61,7 +37,7 @@
                 </div>
             </div>
 
-            {{-- Show Message For Desktop --}}
+            {{-- message picked --}}
             <div class="col-12 col-lg-8 ">
                 <div class="custom-card blue">
                     <ul class="list-group">
