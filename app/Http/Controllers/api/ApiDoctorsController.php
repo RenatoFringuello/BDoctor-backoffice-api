@@ -23,7 +23,8 @@ class ApiDoctorsController extends Controller
                 })
                 ->whereHas('sponsors', function ($query) use ($request) {
                     $query->where('id', '<>', '1');
-                });
+                })
+                ->where('isActive', '=', '1');
             /**
              * user_query_not_featured prende tutti i dottori senza Sponsor
              */
@@ -35,7 +36,8 @@ class ApiDoctorsController extends Controller
                 })
                 ->whereHas('sponsors', function ($query) use ($request) {
                     $query->where('id', '=', '1');
-                });
+                })
+                ->where('isActive', '=', '1');
             
             //con queste condizioni vengono fatti gli orderBy average and count
             if ($request->sortByAvg) {
@@ -88,6 +90,7 @@ class ApiDoctorsController extends Controller
             ->whereHas('sponsors', function ($query) use ($request) {
                 $query->where('id', '<>', '1');
             })
+            ->where('isActive', '=', '1')
             ->get();
 
 
