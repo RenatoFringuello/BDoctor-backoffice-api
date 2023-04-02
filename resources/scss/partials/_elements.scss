@@ -15,6 +15,11 @@
     }
 }
 
+.scroller{
+    overflow-x: hidden;
+    max-height: 50vh;
+}
+
 // price
 .price{
     color: inherit;

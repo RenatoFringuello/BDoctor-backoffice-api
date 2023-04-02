@@ -328,19 +328,20 @@ class ProfileTableSeeder extends Seeder
                 "bio" => "I'm heading back to Colorado tomorrow after being down in Santa Barbara over the weekend for the festival there. I will be making October plans once there and will try to arrange so I'm back here for the birthday if possible. I'll let you know as soon as I know the doctor's appointment schedule and my flight plans.",
                 "curriculum" => "Curriculum",
                 "services" => "Health care is delivered by health professionals and allied health fields. Medicine, dentistry, pharmacy, midwifery, nursing, optometry, audiology, psychology, occupational therapy, physical therapy, athletic training, and other health professions all constitute health care. It includes work done in providing primary care, secondary care, and tertiary care, as well as in public health. ",
-                "address" => "via Università",
-                "telephone" => "079225775",
+                "address" => "via Roma 3",
+                "telephone" => "079225525",
             ],
             [
                 "picture" => "https://i.pinimg.com/originals/38/49/47/38494781452e9bb758bbd2478f121501.png",
                 "bio" => "I'm heading back to Colorado tomorrow after being down in Santa Barbara over the weekend for the festival there. I will be making October plans once there and will try to arrange so I'm back here for the birthday if possible. I'll let you know as soon as I know the doctor's appointment schedule and my flight plans.",
                 "curriculum" => "Curriculum",
                 "services" => "Health care is delivered by health professionals and allied health fields. Medicine, dentistry, pharmacy, midwifery, nursing, optometry, audiology, psychology, occupational therapy, physical therapy, athletic training, and other health professions all constitute health care. It includes work done in providing primary care, secondary care, and tertiary care, as well as in public health. ",
-                "address" => "via Gran Sasso 7",
-                "telephone" => "079299525",
-            ],
-
+                "address" => "via Giulio Cesare 4",
+                "telephone" => "079228525",
+            ]
         ];
+
+        // dd(count($profiles));
         $users = User::all();
         foreach ($profiles as $i => $profile) {
             $newProfile = new Profile();

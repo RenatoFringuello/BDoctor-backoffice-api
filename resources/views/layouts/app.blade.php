@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'BDoctor') }}</title>
+
+    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/B-Doc-Logo.png') }}" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -39,8 +41,8 @@
         @include('layouts.partials.popup')
         @include('layouts.partials.header')
 
-        {{-- <main class="min-h-80 d-flex justify-content-center align-items-center"> TO CENTER EVERY CONTENT SMALLER THAN 90VH --}}
-        <main class="min-h-80">
+        <main class="min-h-80 d-flex justify-content-center align-items-center">
+            {{-- <main class="min-h-80"> --}}
             @yield('content')
         </main>
 
