@@ -45,12 +45,15 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
                                 {{-- User Pictures --}}
-                                <img class="user-icon"
-                                    @if (!str_starts_with(Auth::user()->profile->picture, 'http')) src="{{ asset('storage/' . Auth::user()->profile->picture) }}"
+                                @if (Route::currentRouteName() != 'profile.register')
+                                    <img class="user-icon"
+                                        @if (!str_starts_with(Auth::user()->profile->picture, 'http')) src="{{ asset('storage/' . Auth::user()->profile->picture) }}"
                                     @else                     
                                     src="{{ Auth::user()->profile->picture }}" @endif
-                                    alt="{{ Auth::user()->name . '\'s picture imgs' }}">
+                                        alt="{{ Auth::user()->name . '\'s picture imgs' }}">
+                                @endif
                                 {{ Auth::user()->name }}
                             </a>
 
