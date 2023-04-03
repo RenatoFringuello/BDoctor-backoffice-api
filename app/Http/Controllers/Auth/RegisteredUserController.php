@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $specializations = Specialization::all();
+        $specializations = Specialization::orderBy('name')->get();
         $user = new User();
         return view('auth.register', compact('specializations', 'user'));
     }

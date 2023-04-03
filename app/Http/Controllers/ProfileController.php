@@ -23,7 +23,7 @@ class ProfileController extends Controller
     {
         return view('profile.edit', [
             'user' => $request->user(),
-            'specializations' => Specialization::all(),
+            'specializations' => Specialization::orderBy('name')->get(),
             'sponsors' => Sponsor::all(),
         ]);
     }
