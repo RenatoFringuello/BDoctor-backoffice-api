@@ -91,24 +91,19 @@
                                     @endif
 
                                     {{-- messages button --}}
-                                    @if (count($messages) != 0)
-                                        <div class="col-6">
-                                            <a href="{{ route('messages.index') }}"
-                                                class="btn doc-btn me-auto text-decoration-none text-white w-100">
-                                                <label for="" class="title">You have {{ count($messages) }}
-                                                    messages</label>
-                                            </a>
-                                        </div>
-                                    @endif
+                                    <div class="col-6">
+                                        <a @if (count($messages) != 0)href="{{ route('messages.index') }}"@endif
+                                            class="@if (count($messages) != 0) doc-btn @else btn-secondary @endif btn me-auto text-decoration-none w-100 title">
+                                            You have {{ count($messages) }} messages
+                                        </a>
+                                    </div>
                                     {{-- reviews button --}}
-                                    @if (count($reviews) != 0)
-                                        <div class="col-6">
-                                            <a href="{{ route('reviews.index') }}"
-                                                class="btn doc-btn me-auto text-decoration-none text-white w-100">
-                                                <label class="title">You have {{ count($reviews) }} reviews</label>
-                                            </a>
-                                        </div>
-                                    @endif
+                                    <div class="col-6">
+                                        <a @if (count($reviews) != 0)href="{{ route('reviews.index') }}"@endif
+                                            class="@if (count($reviews) != 0) doc-btn @else btn-secondary @endif btn me-auto text-decoration-none w-100 title">
+                                            You have {{ count($reviews) }} reviews
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
