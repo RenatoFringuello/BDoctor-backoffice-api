@@ -17,17 +17,18 @@ class ReviewTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
-
-        for ($i = 0; $i < count(User::all()) * 3; $i++) {
-            $newReview = new Review();
-            $newReview->user_id = ($i < 40) ? $i + 1  : User::inRandomOrder()->first()->id;
-            $newReview->email = $faker->email();
-            $newReview->name = $faker->name();
-            $newReview->lastname = $faker->lastName();
-            $newReview->content = $faker->realTextBetween(50, 500);
-            $newReview->rating = $faker->numberBetween(0, 10);
-            $newReview->save();
+        $users = User::all();
+        foreach ($users as $user) {
+            for ($i = 0; $i < rand(5,15); $i++) {
+                $newReview = new Review();
+                $newReview->user_id = $user->id;
+                $newReview->email = $faker->email();
+                $newReview->name = $faker->name();
+                $newReview->lastname = $faker->lastName();
+                $newReview->content = $faker->realTextBetween(50, 500);
+                $newReview->rating = $faker->numberBetween(0, 10);
+                $newReview->save();
+            }
         }
     }
 }
