@@ -6,6 +6,7 @@ use App\Http\Controllers\api\ApiDoctorsController;
 use App\Http\Controllers\Api\ApiMessagesController;
 use App\Http\Controllers\api\ApiSpecializationsController;
 use App\Http\Controllers\Api\ApiReviewsController;
+use App\Http\Controllers\api\ApiStatsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/stats', [ApiStatsController::class, 'index'])->name('api.stats.index');
 Route::get('/doctors', [ApiDoctorsController::class, 'index'])->name('api.doctors.index');
 Route::get('/sponsored', [ApiDoctorsController::class, 'sponsored'])->name('api.doctors.sponsored');
 
