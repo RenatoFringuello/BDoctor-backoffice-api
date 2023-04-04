@@ -347,7 +347,7 @@ class ProfileTableSeeder extends Seeder
             $newProfile = new Profile();
             $newProfile->user_id = $users[$i]->id;
             $newProfile->bio = $profile['bio'];
-            $newProfile->picture = $profile['picture'];
+            $newProfile->picture = 'https://source.unsplash.com/random/90' . $i . '%C3%97700/?person';
             $newProfile->curriculum = $profile['curriculum'];
             $newProfile->services = $profile['services'];
             $newProfile->address = $profile['address'];
