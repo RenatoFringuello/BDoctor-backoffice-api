@@ -63,7 +63,7 @@
                                         <div class="col-12">
                                             <div class="p-2">
                                                 @if (isset(Auth::user()->profile->bio))
-                                                    <div class="mb-2 fs-5">Bio</div>
+                                                    <div class="mb-2 fs-5">Biograph</div>
                                                     <p class="card text-dark p-2">{{ Auth::user()->profile->bio }}</p>
                                                 @endif
 
