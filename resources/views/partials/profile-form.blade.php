@@ -94,7 +94,11 @@
     <div class="mb-4 row">
         <div class="text-end me-5">
             <button type="submit" class="btn btn-primary doc-btn mt-3">
-                {{ __('Send') }}
+                @if ($title == 'Complete your profile')
+                    {{ __('Skip') }}
+                @else
+                    {{ __('Send') }}
+                @endif
             </button>
         </div>
     </div>
